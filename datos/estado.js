@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-17T19:00",
+ "actualizado": "2026-11-17T20:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-17T18:45",
-  "altura": 0.34,
+  "hora": "2026-11-17T19:45",
+  "altura": 0.35,
   "fresco": true
  },
  "fuentes": {
@@ -40,7 +40,7 @@ window.VIGIA = {
    "pico": 1.07,
    "eff": 1.07,
    "fuente": "modelo",
-   "plazo_h": 4.0,
+   "plazo_h": 3.0,
    "margen": 0.18,
    "etiqueta": null,
    "evento": "-",
@@ -52,8 +52,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    0.83,
-    1.31
+    0.84,
+    1.3
    ]
   },
   {
@@ -62,8 +62,8 @@ window.VIGIA = {
    "pico": 1.2,
    "eff": 1.2,
    "fuente": "SHN",
-   "plazo_h": 8.0,
-   "margen": 0.22,
+   "plazo_h": 7.0,
+   "margen": 0.21,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -74,8 +74,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    0.92,
-    1.48
+    0.93,
+    1.47
    ]
   },
   {
@@ -84,7 +84,7 @@ window.VIGIA = {
    "pico": 1.59,
    "eff": 1.59,
    "fuente": "modelo",
-   "plazo_h": 52.0,
+   "plazo_h": 51.0,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
@@ -106,7 +106,7 @@ window.VIGIA = {
    "pico": 1.89,
    "eff": 1.89,
    "fuente": "modelo",
-   "plazo_h": 55.0,
+   "plazo_h": 54.0,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
@@ -115,7 +115,7 @@ window.VIGIA = {
    "prob": {
     "2.40": 10,
     "2.50": 6,
-    "2.90": 1
+    "2.90": 0
    },
    "rango": [
     1.39,
@@ -128,7 +128,7 @@ window.VIGIA = {
    "pico": 1.37,
    "eff": 1.37,
    "fuente": "modelo",
-   "plazo_h": 78.0,
+   "plazo_h": 77.0,
    "margen": 0.41,
    "etiqueta": null,
    "evento": "-",
