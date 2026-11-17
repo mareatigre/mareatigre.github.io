@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>¿Cómo viene acertando? · Vigía de Marea Tigre</title>
+<link rel="stylesheet" href="estilo.css">
+<script src="datos/estado.js"></script>
+<script src="datos/ejemplos.js"></script>
+<script src="comun.js"></script>
+</head><body><main id="app"></main>
+<script>
+const R = V.resultados;
+const VACIO = R.length === 0;
+const dif = R.map(r => r.real - r.previsto);
+const arriba = dif.filter(x => x > 0).length;
+const prom = VACIO ? 0 : dif.reduce((a, b) => a + b, 0) / dif.length;
+const mayor = VACIO ? null : R.reduce((a, r) => Math.abs(r.real - r.previsto) > Math.abs(a.real - a.previsto) ? r : a);
+
+// Gráfico vertical: abajo los días, hacia arriba la altura del agua.
+// Por día, un punto hueco (lo previsto) y uno lleno (lo que pasó), unidos por una raya: el largo de la raya es el error.
+function grafico() {
+  const W = 340, H = 300, x0 = 36, x1 = W - 8, top = 30, bot = H - 34;
+  const vals = R.flatMap(r => [r.real, r.previsto]);
+  const lo = Math.floor(Math.min(...vals) * 5) / 5 - 0.1, hi = Math.ceil(Math.max(...vals) * 5) / 5 + 0.1;
+  const paso = (x1 - x0) / R.length, x = i => x0 + paso * (i + 0.5), y = v => bot - (v - lo) / (hi - lo) * (bot - top);
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Previsto contra real por día">`;
+  for (let v = Math.ceil(lo * 5) / 5; v <= hi + 1e-9; v += 0.2) {
+    s += `<line x1="${x0}" x2="${x1}" y1="${y(v)}" y2="${y(v)}" stroke="${css('--line')}"/>`;
+    s += `<text x="${x0 - 6}" y="${y(v) + 4}" text-anchor="end" font-size="10.5" fill="${css('--mut')}">${v.toFixed(1).replace(".", ",")}</text>`;
+  }
+  // Umbrales, solo si caen dentro de lo que se ve (con días tranquilos no aparecen).
+  [[V.umbrales.aviso, "2,50", "--avi"], [V.umbrales.alerta, "2,90", "--ale"]].forEach(([v, t, c]) => {
+    if (v > lo && v < hi) s += `<line x1="${x0}" x2="${x1}" y1="${y(v)}" y2="${y(v)}" stroke="${css(c)}" stroke-dasharray="4 3"/>
+      <text x="${x1}" y="${y(v) - 3}" text-anchor="end" font-size="10" fill="${css(c)}">${t}</text>`;
+  });
+  R.forEach((r, i) => {
+    s += `<line x1="${x(i)}" x2="${x(i)}" y1="${y(r.previsto)}" y2="${y(r.real)}" stroke="${css('--mut')}" stroke-width="2"/>`;
+    s += `<circle cx="${x(i)}" cy="${y(r.previsto)}" r="4.5" fill="${css('--card')}" stroke="${css('--agua')}" stroke-width="2"/>`;
+    s += `<circle cx="${x(i)}" cy="${y(r.real)}" r="4.5" fill="${css('--ink')}"/>`;
+    if (i % 2 === 0 || R.length <= 8)
+      s += `<text x="${x(i)}" y="${bot + 16}" text-anchor="middle" font-size="10.5" fill="${css('--ink2')}">${r.fecha.slice(8, 10)}</text>`;
+  });
+  s += `<text x="${x0}" y="${bot + 30}" font-size="10.5" fill="${css('--mut')}">día del mes (${ddmm(R[0].fecha)} a ${ddmm(R[R.length - 1].fecha)})</text>`;
+  s += `<circle cx="${x0 + 6}" cy="10" r="4.5" fill="${css('--card')}" stroke="${css('--agua')}" stroke-width="2"/>
+        <text x="${x0 + 16}" y="14" font-size="11.5" fill="${css('--ink2')}">previsto 1 día antes</text>
+        <circle cx="${x0 + 156}" cy="10" r="4.5" fill="${css('--ink')}"/>
+        <text x="${x0 + 166}" y="14" font-size="11.5" fill="${css('--ink2')}">lo que pasó</text>`;
+  return s + "</svg>";
+}
+
+const cm = v => Math.round(Math.abs(v) * 100) + " cm";
+document.getElementById("app").innerHTML = cabecera("resultados.html") + avisosArriba() + `
+  <h1>¿Cómo viene acertando?</h1>
+  <p class="chico">Marea más alta de cada día en San Fernando: lo que se previó el día anterior y lo que se midió.</p>
+  ${VACIO ? '<section class="card"><p>Todavía no hay días para comparar: hace falta al menos un día completo con pronóstico guardado y lecturas reales.</p></section>' : `<section class="card">
+    <p style="margin:0 0 6px"><b>En ${arriba} de ${R.length} días</b> el agua llegó más alto de lo previsto.
+       En promedio, <b>${cm(prom)} ${prom >= 0 ? "más" : "menos"}</b>.</p>
+    <p class="chico" style="margin:0">La diferencia más grande: ${cm(mayor.real - mayor.previsto)} el ${ddmm(mayor.fecha)}.</p>
+  </section>
+  <section class="card">${grafico()}<p class="chico mut" style="margin:4px 0 0">Altura en metros (San Fernando).</p></section>`}
+  ${!V.experiencia ? "" : `<section class="card"><h2>¿En qué alturas tiene experiencia el modelo?</h2>
+    <p class="chico">Picos de pleamar ya medidos, según la altura que había previsto el modelo de 1 a 4 días antes.</p>
+    <table><tr><th>Previsto</th><th>Picos</th><th>El agua real llegó</th></tr>
+    ${V.experiencia.franjas.map(f => `<tr><td>${nomFranja(f)}</td><td>${f.picos}</td><td>${f.picos === 0 ? "sin experiencia"
+       : (f.pocos ? '<span class="mut">pocos datos</span> · ' : "") + (f.sesgo >= 0 ? "+" : "−") + Math.round(Math.abs(f.sesgo) * 100) + " cm"}</td></tr>`).join("")}</table>
+    <p class="chico">“+30 cm” = en promedio el agua llegó 30 cm más alto de lo que decía el modelo. Con menos de
+      ${V.experiencia.pocos_picos} picos medidos no se puede sacar conclusiones. Donde no hay experiencia, no sabemos cómo se equivoca:
+      en una sudestada fuerte el error puede ser otro.</p></section>`}
+  <section class="card"><details><summary>Para leerlo bien</summary>
+    <p class="chico">Son pocos días y ninguno con marea alta: sirven para ver la tendencia, no para confiar ciegamente.
+      La lectura real es una por hora, así que el pico verdadero puede haber sido un poco más alto.
+      Con más semanas de datos, esta página va a mostrar también cómo acierta a 2, 3 y 4 días.</p>
+  </details></section>` + pie();
+</script></body></html>
