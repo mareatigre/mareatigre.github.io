@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-17T11:45",
+ "actualizado": "2026-11-17T11:46",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
