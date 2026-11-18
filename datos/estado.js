@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-18T19:00",
+ "actualizado": "2026-11-18T20:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,15 +12,15 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-18T18:45",
-  "altura": 0.77,
+  "hora": "2026-11-18T19:45",
+  "altura": 0.68,
   "fresco": true
  },
  "fuentes": {
   "Pronóstico SHN": true,
   "Avisos SHN": true,
   "Alturas SHN": true,
-  "Modelo SHN": false,
+  "Modelo SHN": true,
   "Ríos INA": true
  },
  "rio": {
@@ -35,25 +35,91 @@ window.VIGIA = {
  "sube_al_final": false,
  "dias": [
   {
-   "fecha": "2026-11-19",
-   "hora": "03:00",
-   "pico": 2.0,
-   "eff": 2.0,
-   "fuente": "SHN",
-   "plazo_h": 8.0,
-   "margen": 0.22,
+   "fecha": "2026-11-18",
+   "hora": "23:00",
+   "pico": 1.18,
+   "eff": 1.18,
+   "fuente": "modelo",
+   "plazo_h": 3.0,
+   "margen": 0.18,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "prob": {
-    "2.40": 3,
-    "2.50": 1,
+    "2.40": 0,
+    "2.50": 0,
     "2.90": 0
    },
    "rango": [
-    1.72,
-    2.28
+    0.95,
+    1.41
+   ]
+  },
+  {
+   "fecha": "2026-11-19",
+   "hora": "03:00",
+   "pico": 1.85,
+   "eff": 1.85,
+   "fuente": "SHN",
+   "plazo_h": 7.0,
+   "margen": 0.21,
+   "etiqueta": null,
+   "evento": "-",
+   "compuesto": false,
+   "parcial": false,
+   "prob": {
+    "2.40": 0,
+    "2.50": 0,
+    "2.90": 0
+   },
+   "rango": [
+    1.58,
+    2.12
+   ]
+  },
+  {
+   "fecha": "2026-11-20",
+   "hora": "02:00",
+   "pico": 1.89,
+   "eff": 1.89,
+   "fuente": "modelo",
+   "plazo_h": 30.0,
+   "margen": 0.37,
+   "etiqueta": null,
+   "evento": "-",
+   "compuesto": false,
+   "parcial": false,
+   "prob": {
+    "2.40": 8,
+    "2.50": 5,
+    "2.90": 0
+   },
+   "rango": [
+    1.42,
+    2.36
+   ]
+  },
+  {
+   "fecha": "2026-11-21",
+   "hora": "01:00",
+   "pico": 1.37,
+   "eff": 1.37,
+   "fuente": "modelo",
+   "plazo_h": 53.0,
+   "margen": 0.39,
+   "etiqueta": null,
+   "evento": "-",
+   "compuesto": false,
+   "parcial": true,
+   "prob": {
+    "2.40": 0,
+    "2.50": 0,
+    "2.90": 0
+   },
+   "rango": [
+    0.87,
+    1.87
    ]
   }
  ],
