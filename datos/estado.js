@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-18T15:00",
+ "actualizado": "2026-11-18T16:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-18T14:45",
-  "altura": 1.16,
+  "hora": "2026-11-18T15:45",
+  "altura": 1.0,
   "fresco": true
  },
  "fuentes": {
@@ -25,11 +25,11 @@ window.VIGIA = {
  },
  "rio": {
   "estacion": "Rosario",
-  "nivel": 4.9,
-  "tendencia": 0.071,
+  "nivel": 4.86,
+  "tendencia": 0.066,
   "ajuste": 0.0,
   "umbral": 5.0,
-  "eta_dias": 1.399999999999995
+  "eta_dias": 2.130434782608691
  },
  "escalera": null,
  "sube_al_final": false,
@@ -37,23 +37,23 @@ window.VIGIA = {
   {
    "fecha": "2026-11-19",
    "hora": "03:00",
-   "pico": 1.6,
-   "eff": 1.6,
+   "pico": 2.0,
+   "eff": 2.0,
    "fuente": "SHN",
-   "plazo_h": 12.0,
-   "margen": 0.26,
+   "plazo_h": 11.0,
+   "margen": 0.25,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "prob": {
-    "2.40": 0,
-    "2.50": 0,
+    "2.40": 5,
+    "2.50": 2,
     "2.90": 0
    },
    "rango": [
-    1.27,
-    1.93
+    1.68,
+    2.32
    ]
   }
  ],
