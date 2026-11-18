@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-18T13:00",
+ "actualizado": "2026-11-18T14:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-18T12:45",
-  "altura": 1.5,
+  "hora": "2026-11-18T13:45",
+  "altura": 1.35,
   "fresco": true
  },
  "fuentes": {
@@ -40,7 +40,7 @@ window.VIGIA = {
    "pico": 1.5,
    "eff": 1.5,
    "fuente": "SHN",
-   "plazo_h": 0.5,
+   "plazo_h": 0.0,
    "margen": 0.15,
    "etiqueta": null,
    "evento": "-",
@@ -52,8 +52,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.3,
-    1.7
+    1.31,
+    1.69
    ]
   }
  ],
