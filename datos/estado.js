@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-17T23:00",
+ "actualizado": "2026-11-18T00:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-17T22:45",
-  "altura": 1.29,
+  "hora": "2026-11-17T23:45",
+  "altura": 1.5,
   "fresco": true
  },
  "fuentes": {
@@ -26,10 +26,10 @@ window.VIGIA = {
  "rio": {
   "estacion": "Rosario",
   "nivel": 4.9,
-  "tendencia": 0.086,
+  "tendencia": 0.071,
   "ajuste": 0.0,
   "umbral": 5.0,
-  "eta_dias": 1.1666666666666616
+  "eta_dias": 1.399999999999995
  },
  "escalera": null,
  "sube_al_final": false,
@@ -58,11 +58,11 @@ window.VIGIA = {
   },
   {
    "fecha": "2026-11-18",
-   "hora": "03:00",
-   "pico": 1.2,
-   "eff": 1.2,
+   "hora": "03:30",
+   "pico": 1.55,
+   "eff": 1.55,
    "fuente": "SHN",
-   "plazo_h": 4.0,
+   "plazo_h": 3.5,
    "margen": 0.18,
    "etiqueta": null,
    "evento": "-",
@@ -74,8 +74,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    0.96,
-    1.44
+    1.32,
+    1.78
    ]
   },
   {
@@ -84,7 +84,7 @@ window.VIGIA = {
    "pico": 1.59,
    "eff": 1.59,
    "fuente": "modelo",
-   "plazo_h": 48.0,
+   "plazo_h": 47.0,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
@@ -96,8 +96,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.09,
-    2.09
+    1.1,
+    2.08
    ]
   },
   {
@@ -106,14 +106,14 @@ window.VIGIA = {
    "pico": 1.89,
    "eff": 1.89,
    "fuente": "modelo",
-   "plazo_h": 51.0,
+   "plazo_h": 50.0,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "prob": {
-    "2.40": 10,
+    "2.40": 9,
     "2.50": 6,
     "2.90": 0
    },
@@ -128,7 +128,7 @@ window.VIGIA = {
    "pico": 1.37,
    "eff": 1.37,
    "fuente": "modelo",
-   "plazo_h": 74.0,
+   "plazo_h": 73.0,
    "margen": 0.41,
    "etiqueta": null,
    "evento": "-",
@@ -146,11 +146,6 @@ window.VIGIA = {
   }
  ],
  "resultados": [
-  {
-   "fecha": "2026-11-03",
-   "previsto": 1.82,
-   "real": 1.91
-  },
   {
    "fecha": "2026-11-04",
    "previsto": 1.99,
@@ -215,6 +210,11 @@ window.VIGIA = {
    "fecha": "2026-11-16",
    "previsto": 1.58,
    "real": 1.68
+  },
+  {
+   "fecha": "2026-11-17",
+   "previsto": 1.26,
+   "real": 1.54
   }
  ],
  "experiencia": {
