@@ -60,6 +60,10 @@ function leyenda() {
   return `<ul class="leyenda">${L.map(([k, t]) => `<li><span class="pto" style="background:var(${NIVELES[k].color})"></span>${t}</li>`).join("")}</ul>`;
 }
 
+// Fecha y hora de la última versión del Modelo de Altura Total que publicó el SHN ("17/11 03:00 h"), o "".
+// Viene en estado.js (vigia_servidor.py v4). Con un estado.js viejo, sin ese dato, no se muestra nada.
+const versionModelo = () => V.modelo && V.modelo.inicializado ? `${ddmm(V.modelo.inicializado)} ${hhmm(V.modelo.inicializado)} h` : "";
+
 function avisosArriba() {
   let h = "";
   if (V.prueba) h += `<div class="aviso-ejemplo">🧪 <b>MODO PRUEBA.</b> Datos reales de la corrida del ${ddmm(V.actualizado)} a las
@@ -73,6 +77,8 @@ function avisosArriba() {
   const horas = (Date.now() - new Date(V.actualizado)) / 36e5;
   if (!V.ejemplo && !V.prueba && horas > HORAS_VIEJO)
     h += `<div class="viejo">⏸️ Los datos tienen ${Math.floor(horas)} horas. El sistema puede estar sin conexión: consultá directamente al SHN.</div>`;
+  // Solo las fuentes que NO se pudieron leer. Un modelo viejo porque el SHN no lo actualizó no es una caída
+  // (el programa lo marca como leído) y se informa aparte, en gris, debajo de la hora de actualización.
   const caidas = Object.entries(V.fuentes).filter(([, ok]) => !ok).map(([n]) => n);
   if (caidas.length) h += `<div class="viejo">Sin leer en la última corrida: ${caidas.join(", ")}.</div>`;
   return h;
@@ -91,7 +97,7 @@ function pie() {
       <ul>
         <li><a href="https://www.hidro.gob.ar/Oceanografia/Pronostico.asp">Pronóstico mareológico</a> (pleamares y bajamares oficiales)</li>
         <li><a href="https://www.hidro.gov.ar/oceanografia/alturashorarias.asp">Alturas horarias</a> (lo que se mide en San Fernando)</li>
-        <li><a href="https://api.shn.gob.ar/imagenes-modelo/curvas_altura-total/Alturatotal_San_Fernando.svg">Modelo de Altura Total, San Fernando</a> (curva de ~4 días)</li>
+        <li><a href="https://api.shn.gob.ar/imagenes-modelo/curvas_altura-total/Alturatotal_San_Fernando.svg">Modelo de Altura Total, San Fernando</a> (curva de ~4 días${versionModelo() ? `; última versión publicada por el SHN: ${versionModelo()}` : ""})</li>
         <li><a href="https://www.hidro.gov.ar/oceanografia/AACRIOPLA.asp">Avisos de crecida del Río de la Plata</a></li>
       </ul>
       <p>Instituto Nacional del Agua (INA): <a href="https://alerta.ina.gob.ar/a5/diario/reporte_diario">reporte diario de los ríos</a> (Paraná en Rosario y Frente del Delta).</p>
@@ -104,7 +110,14 @@ function pie() {
 
 function cabecera(activa) {
   const L = [["index.html", "Hoy"], ["probabilidades.html", "Probabilidades"], ["resultados.html", "Aciertos"]];
+  // Modelo del SHN sin actualizar: nota chica y gris (no es una falla nuestra ni un riesgo, pero cambia lo que se ve).
+  // Con estado.js de vigia_servidor v4 (sin `usado`/`atrasado`), vigente=false quería decir "viejo y no usado".
+  const mo = V.modelo, atras = mo && (mo.atrasado ?? mo.vigente === false), usado = mo && (mo.usado ?? mo.vigente);
+  const notaModelo = !atras ? "" : `<p class="actualizado chico mut" style="margin-top:-8px">Hidrografía no publicó un modelo
+       nuevo desde el ${versionModelo()}. ${usado
+         ? "Se sigue usando esa versión, con más margen de error."
+         : "Esa versión ya es muy vieja y no se usa: por eso el pronóstico cubre menos días."}</p>`;
   return `<header class="top"><a class="marca" href="${enl('index.html')}">🌊 Vigía de Marea · Tigre</a>
     <nav>${L.filter(l => l[0] !== activa).map(l => `<a href="${enl(l[0])}">${l[1]}</a>`).join("")}</nav></header>
-    <p class="actualizado">Última actualización: <b>${cuando(V.actualizado)}</b></p>`;
+    <p class="actualizado">Última actualización: <b>${cuando(V.actualizado)}</b></p>${notaModelo}`;
 }
