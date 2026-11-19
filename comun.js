@@ -113,10 +113,7 @@ function cabecera(activa) {
   // Modelo del SHN sin actualizar: nota chica y gris (no es una falla nuestra ni un riesgo, pero cambia lo que se ve).
   // Con estado.js de vigia_servidor v4 (sin `usado`/`atrasado`), vigente=false quería decir "viejo y no usado".
   const mo = V.modelo, atras = mo && (mo.atrasado ?? mo.vigente === false), usado = mo && (mo.usado ?? mo.vigente);
-  const notaModelo = !atras ? "" : `<p class="actualizado chico mut" style="margin-top:-8px">Hidrografía no publicó un modelo
-       nuevo desde el ${versionModelo()}. ${usado
-         ? "Se sigue usando esa versión, con más margen de error."
-         : "Esa versión ya es muy vieja y no se usa: por eso el pronóstico cubre menos días."}</p>`;
+  const notaModelo = !atras ? "" : `<p class="actualizado chico mut" style="margin-top:-8px">Última versión del modelo de Hidrografía: ${versionModelo()}</p>`;
   return `<header class="top"><a class="marca" href="${enl('index.html')}">🌊 Vigía de Marea · Tigre</a>
     <nav>${L.filter(l => l[0] !== activa).map(l => `<a href="${enl(l[0])}">${l[1]}</a>`).join("")}</nav></header>
     <p class="actualizado">Última actualización: <b>${cuando(V.actualizado)}</b></p>${notaModelo}`;
