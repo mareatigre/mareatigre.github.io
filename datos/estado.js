@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-19T19:00",
+ "actualizado": "2026-11-19T19:13",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -25,7 +25,7 @@ window.VIGIA = {
  },
  "modelo": {
   "inicializado": "2026-11-19T09:00",
-  "horas": 10.0,
+  "horas": 10.2,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -47,7 +47,7 @@ window.VIGIA = {
    "pico": 1.12,
    "eff": 1.12,
    "fuente": "modelo",
-   "plazo_h": 4.0,
+   "plazo_h": 3.8,
    "margen": 0.27,
    "etiqueta": null,
    "evento": "-",
@@ -69,7 +69,7 @@ window.VIGIA = {
    "pico": 1.65,
    "eff": 1.65,
    "fuente": "SHN",
-   "plazo_h": 9.0,
+   "plazo_h": 8.8,
    "margen": 0.23,
    "etiqueta": null,
    "evento": "-",
@@ -91,7 +91,7 @@ window.VIGIA = {
    "pico": 1.46,
    "eff": 1.46,
    "fuente": "modelo",
-   "plazo_h": 32.0,
+   "plazo_h": 31.8,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
@@ -113,7 +113,7 @@ window.VIGIA = {
    "pico": 1.53,
    "eff": 1.53,
    "fuente": "modelo",
-   "plazo_h": 55.0,
+   "plazo_h": 54.8,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
@@ -135,7 +135,7 @@ window.VIGIA = {
    "pico": 1.92,
    "eff": 1.92,
    "fuente": "modelo",
-   "plazo_h": 80.0,
+   "plazo_h": 79.8,
    "margen": 0.43,
    "etiqueta": null,
    "evento": "-",
@@ -224,6 +224,266 @@ window.VIGIA = {
    "real": 1.74
   }
  ],
+ "resultados_plazo": {
+  "1": [
+   {
+    "fecha": "2026-11-05",
+    "previsto": 1.16,
+    "real": 1.44
+   },
+   {
+    "fecha": "2026-11-06",
+    "previsto": 1.56,
+    "real": 2.07
+   },
+   {
+    "fecha": "2026-11-07",
+    "previsto": 2.25,
+    "real": 2.58
+   },
+   {
+    "fecha": "2026-11-08",
+    "previsto": 1.79,
+    "real": 1.59
+   },
+   {
+    "fecha": "2026-11-09",
+    "previsto": 1.19,
+    "real": 1.43
+   },
+   {
+    "fecha": "2026-11-10",
+    "previsto": 0.92,
+    "real": 1.26
+   },
+   {
+    "fecha": "2026-11-11",
+    "previsto": 1.0,
+    "real": 1.53
+   },
+   {
+    "fecha": "2026-11-12",
+    "previsto": 1.34,
+    "real": 1.83
+   },
+   {
+    "fecha": "2026-11-13",
+    "previsto": 1.45,
+    "real": 1.67
+   },
+   {
+    "fecha": "2026-11-14",
+    "previsto": 1.18,
+    "real": 1.37
+   },
+   {
+    "fecha": "2026-11-15",
+    "previsto": 1.59,
+    "real": 1.73
+   },
+   {
+    "fecha": "2026-11-16",
+    "previsto": 1.58,
+    "real": 1.68
+   },
+   {
+    "fecha": "2026-11-17",
+    "previsto": 1.26,
+    "real": 1.54
+   },
+   {
+    "fecha": "2026-11-18",
+    "previsto": 1.37,
+    "real": 1.74
+   }
+  ],
+  "2": [
+   {
+    "fecha": "2026-11-06",
+    "previsto": 1.57,
+    "real": 2.07
+   },
+   {
+    "fecha": "2026-11-07",
+    "previsto": 2.18,
+    "real": 2.58
+   },
+   {
+    "fecha": "2026-11-08",
+    "previsto": 1.85,
+    "real": 1.59
+   },
+   {
+    "fecha": "2026-11-09",
+    "previsto": 1.2,
+    "real": 1.43
+   },
+   {
+    "fecha": "2026-11-10",
+    "previsto": 1.0,
+    "real": 1.26
+   },
+   {
+    "fecha": "2026-11-11",
+    "previsto": 0.94,
+    "real": 1.53
+   },
+   {
+    "fecha": "2026-11-12",
+    "previsto": 1.22,
+    "real": 1.83
+   },
+   {
+    "fecha": "2026-11-13",
+    "previsto": 1.56,
+    "real": 1.67
+   },
+   {
+    "fecha": "2026-11-14",
+    "previsto": 1.12,
+    "real": 1.37
+   },
+   {
+    "fecha": "2026-11-15",
+    "previsto": 1.45,
+    "real": 1.73
+   },
+   {
+    "fecha": "2026-11-16",
+    "previsto": 1.41,
+    "real": 1.68
+   },
+   {
+    "fecha": "2026-11-17",
+    "previsto": 1.23,
+    "real": 1.54
+   },
+   {
+    "fecha": "2026-11-18",
+    "previsto": 1.39,
+    "real": 1.74
+   }
+  ],
+  "3": [
+   {
+    "fecha": "2026-11-05",
+    "previsto": 1.22,
+    "real": 1.44
+   },
+   {
+    "fecha": "2026-11-06",
+    "previsto": 1.51,
+    "real": 1.74
+   },
+   {
+    "fecha": "2026-11-07",
+    "previsto": 2.42,
+    "real": 2.58
+   },
+   {
+    "fecha": "2026-11-08",
+    "previsto": 1.93,
+    "real": 1.59
+   },
+   {
+    "fecha": "2026-11-09",
+    "previsto": 1.23,
+    "real": 1.43
+   },
+   {
+    "fecha": "2026-11-10",
+    "previsto": 1.17,
+    "real": 1.26
+   },
+   {
+    "fecha": "2026-11-11",
+    "previsto": 1.08,
+    "real": 1.51
+   },
+   {
+    "fecha": "2026-11-12",
+    "previsto": 1.21,
+    "real": 1.83
+   },
+   {
+    "fecha": "2026-11-13",
+    "previsto": 1.66,
+    "real": 1.67
+   },
+   {
+    "fecha": "2026-11-14",
+    "previsto": 1.01,
+    "real": 1.37
+   },
+   {
+    "fecha": "2026-11-15",
+    "previsto": 1.51,
+    "real": 1.73
+   },
+   {
+    "fecha": "2026-11-16",
+    "previsto": 1.39,
+    "real": 1.68
+   },
+   {
+    "fecha": "2026-11-17",
+    "previsto": 1.13,
+    "real": 1.54
+   },
+   {
+    "fecha": "2026-11-18",
+    "previsto": 1.31,
+    "real": 1.74
+   }
+  ],
+  "4": [
+   {
+    "fecha": "2026-11-06",
+    "previsto": 1.53,
+    "real": 1.35
+   },
+   {
+    "fecha": "2026-11-10",
+    "previsto": 1.02,
+    "real": 0.77
+   },
+   {
+    "fecha": "2026-11-11",
+    "previsto": 0.68,
+    "real": 1.06
+   },
+   {
+    "fecha": "2026-11-12",
+    "previsto": 1.31,
+    "real": 1.21
+   },
+   {
+    "fecha": "2026-11-13",
+    "previsto": 0.96,
+    "real": 1.67
+   },
+   {
+    "fecha": "2026-11-14",
+    "previsto": 1.24,
+    "real": 1.37
+   },
+   {
+    "fecha": "2026-11-15",
+    "previsto": 1.15,
+    "real": 1.49
+   },
+   {
+    "fecha": "2026-11-16",
+    "previsto": 1.46,
+    "real": 1.68
+   },
+   {
+    "fecha": "2026-11-17",
+    "previsto": 0.99,
+    "real": 1.54
+   }
+  ]
+ },
  "experiencia": {
   "franjas": [
    {
