@@ -1,19 +1,20 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>¿Cómo viene acertando? · Vigía de Marea Tigre</title>
+<title>Pronóstico y medición · Vigía de Marea Tigre</title>
 <link rel="stylesheet" href="estilo.css">
 <script src="datos/estado.js"></script>
 <script src="datos/ejemplos.js"></script>
 <script src="comun.js"></script>
 </head><body><main id="app"></main>
 <script>
-const R = V.resultados;
-const VACIO = R.length === 0;
-const dif = R.map(r => r.real - r.previsto);
-const arriba = dif.filter(x => x > 0).length;
-const prom = VACIO ? 0 : dif.reduce((a, b) => a + b, 0) / dif.length;
-const mayor = VACIO ? null : R.reduce((a, r) => Math.abs(r.real - r.previsto) > Math.abs(a.real - a.previsto) ? r : a);
+// Previsto N días antes contra lo medido. `resultados_plazo` lo manda vigia_servidor v6 ({"1": [...], ..., "4": [...]});
+// con un estado.js anterior solo existe `resultados` (1 día) y las otras pestañas quedan apagadas.
+const RP = V.resultados_plazo || {"1": V.resultados};
+const PLAZOS = ["1", "2", "3", "4"];
+let L = "1";
+let R = [];
+const nDias = l => l === "1" ? "1 día" : l + " días";
 
 // Gráfico vertical: abajo los días, hacia arriba la altura del agua.
 // Por día, un punto hueco (lo previsto) y uno lleno (lo que pasó), unidos por una raya: el largo de la raya es el error.
@@ -41,22 +42,46 @@ function grafico() {
   });
   s += `<text x="${x0}" y="${bot + 30}" font-size="10.5" fill="${css('--mut')}">día del mes (${ddmm(R[0].fecha)} a ${ddmm(R[R.length - 1].fecha)})</text>`;
   s += `<circle cx="${x0 + 6}" cy="10" r="4.5" fill="${css('--card')}" stroke="${css('--agua')}" stroke-width="2"/>
-        <text x="${x0 + 16}" y="14" font-size="11.5" fill="${css('--ink2')}">previsto 1 día antes</text>
+        <text x="${x0 + 16}" y="14" font-size="11.5" fill="${css('--ink2')}">previsto ${nDias(L)} antes</text>
         <circle cx="${x0 + 156}" cy="10" r="4.5" fill="${css('--ink')}"/>
-        <text x="${x0 + 166}" y="14" font-size="11.5" fill="${css('--ink2')}">lo que pasó</text>`;
+        <text x="${x0 + 166}" y="14" font-size="11.5" fill="${css('--ink2')}">lo que se midió</text>`;
   return s + "</svg>";
 }
 
 const cm = v => Math.round(Math.abs(v) * 100) + " cm";
-document.getElementById("app").innerHTML = cabecera("resultados.html") + avisosArriba() + `
-  <h1>¿Cómo viene acertando?</h1>
-  <p class="chico">Marea más alta de cada día en San Fernando: lo que se previó el día anterior y lo que se midió.</p>
-  ${VACIO ? '<section class="card"><p>Todavía no hay días para comparar: hace falta al menos un día completo con pronóstico guardado y lecturas reales.</p></section>' : `<section class="card">
-    <p style="margin:0 0 6px"><b>En ${arriba} de ${R.length} días</b> el agua llegó más alto de lo previsto.
+// Resumen y gráfico de la pestaña elegida (se redibuja al tocar otra pestaña).
+function bloque() {
+  R = RP[L] || [];
+  if (!R.length) return `<section class="card"><p>Todavía no hay días para comparar con pronósticos de ${nDias(L)} antes:
+    hace falta al menos un día completo con ese pronóstico guardado y lecturas reales.</p></section>`;
+  const dif = R.map(r => r.real - r.previsto);
+  const arriba = dif.filter(x => x > 0).length;
+  const prom = dif.reduce((a, b) => a + b, 0) / dif.length;
+  const mayor = R.reduce((a, r) => Math.abs(r.real - r.previsto) > Math.abs(a.real - a.previsto) ? r : a);
+  return `<section class="card">
+    <p style="margin:0 0 6px"><b>En ${arriba} de ${R.length} días</b> el agua llegó más alto de lo previsto ${nDias(L)} antes.
        En promedio, <b>${cm(prom)} ${prom >= 0 ? "más" : "menos"}</b>.</p>
     <p class="chico" style="margin:0">La diferencia más grande: ${cm(mayor.real - mayor.previsto)} el ${ddmm(mayor.fecha)}.</p>
   </section>
-  <section class="card">${grafico()}<p class="chico mut" style="margin:4px 0 0">Altura en metros (San Fernando).</p></section>`}
+  <section class="card">${grafico()}<p class="chico mut" style="margin:4px 0 0">Altura en metros (San Fernando).</p></section>`;
+}
+function pestanas() {
+  return `<div class="pestanas" role="tablist">${PLAZOS.map(l => `<button role="tab" data-l="${l}" class="${l === L ? "on" : ""}"
+    aria-selected="${l === L}" ${(RP[l] || []).length ? "" : "disabled"}>${nDias(l)}</button>`).join("")}</div>`;
+}
+function elegir(l) {
+  L = l;
+  document.getElementById("pest").innerHTML = pestanas();
+  document.getElementById("bloque").innerHTML = bloque();
+}
+
+document.getElementById("app").innerHTML = cabecera("resultados.html") + avisosArriba() + `
+  <h1>Pronóstico y medición</h1>
+  <p class="chico">Cuánto se alejó la marea real de lo previsto con los datos de Hidrografía, en los últimos días.
+    Marea más alta de cada día en San Fernando: lo previsto con 1 a 4 días de anticipación y lo que se midió.</p>
+  <p class="chico" style="margin-bottom:4px"><b>Previsto con cuántos días de anticipación:</b></p>
+  <div id="pest">${pestanas()}</div>
+  <div id="bloque">${bloque()}</div>
   ${!V.experiencia ? "" : `<section class="card"><h2>¿En qué alturas tiene experiencia el modelo?</h2>
     <p class="chico">Picos de pleamar ya medidos, según la altura que había previsto el modelo de 1 a 4 días antes.</p>
     <table><tr><th>Previsto</th><th>Picos</th><th>El agua real llegó</th></tr>
@@ -66,11 +91,15 @@ document.getElementById("app").innerHTML = cabecera("resultados.html") + avisosA
       ${V.experiencia.pocos_picos} picos medidos no se puede sacar conclusiones. Donde no hay experiencia, no sabemos cómo se equivoca:
       en una sudestada fuerte el error puede ser otro.</p></section>`}
   <section class="card"><details><summary>Para leerlo bien</summary>
-    <p class="chico">Son pocos días y ninguno con marea alta: sirven para ver la tendencia, no para confiar ciegamente.
+    <p class="chico">Son pocos días y casi ninguno con marea alta: sirven para ver la tendencia, no para confiar ciegamente.
       La lectura real es una por hora, así que el pico verdadero puede haber sido un poco más alto.
-      Con más semanas de datos, esta página va a mostrar también cómo acierta a 2, 3 y 4 días.</p>
+      Cambiando de pestaña se ve si el pronóstico se aleja más cuanto antes se hace. A 4 días hay menos casos:
+      la curva del modelo llega justo a unos 4 días y muchas veces no alcanza a cubrir ese día.</p>
   </details></section>` + pie();
+document.getElementById("pest").addEventListener("click", e => {
+  const b = e.target.closest("button[data-l]");
+  if (b && !b.disabled) elegir(b.dataset.l);
+});
 </script>
-  </script>
 <script data-goatcounter="https://mareatigre.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body></html>

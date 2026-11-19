@@ -92,6 +92,7 @@ function pie() {
     <p><b>Es una ayuda para decidir, no un sistema de alerta oficial.</b> No reemplaza al
        <a href="https://www.hidro.gob.ar/">Servicio de Hidrografía Naval</a>, al
        <a href="https://www.ina.gob.ar/">INA</a> ni a Defensa Civil.</p>
+    <p>Datos del SHN y del INA, procesados por mareatigre.</p>
     <details><summary>¿De dónde salen los datos?</summary>
       <p>Servicio de Hidrografía Naval (SHN):</p>
       <ul>
@@ -109,7 +110,7 @@ function pie() {
 }
 
 function cabecera(activa) {
-  const L = [["index.html", "Hoy"], ["probabilidades.html", "Probabilidades"], ["resultados.html", "Aciertos"]];
+  const L = [["index.html", "Hoy"], ["probabilidades.html", "Probabilidades"], ["resultados.html", "Historial"]];
   // Modelo del SHN sin actualizar: nota chica y gris (no es una falla nuestra ni un riesgo, pero cambia lo que se ve).
   // Con estado.js de vigia_servidor v4 (sin `usado`/`atrasado`), vigente=false quería decir "viejo y no usado".
   const mo = V.modelo, atras = mo && (mo.atrasado ?? mo.vigente === false), usado = mo && (mo.usado ?? mo.vigente);

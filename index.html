@@ -10,7 +10,10 @@
 <script>
 // "eff" = pico previsto + ajuste por río (lo mismo que usa el programa para las probabilidades).
 const max = V.dias.length ? V.dias.reduce((a, d) => d.eff > a.eff ? d : a) : null;
-const nv = NIVELES[V.nivel];
+// Sin ningún día de pronóstico y sin nada que avisar: no es "no se esperan mareas altas", es "no sabemos los próximos días".
+const sinPron = !max && V.nivel === "normal";
+const clase = sinPron ? "sin_datos" : V.nivel;
+const nv = sinPron ? {ico: "⏳", titulo: "Sin pronóstico por ahora", color: "--mut"} : NIVELES[V.nivel];
 const m2s = x => x.toFixed(2).replace(".", ",");
 
 // Regla de marea. La escala se estira sola si el pico pasa 3,40 m, así un 3,30 sostenido se ve bien.
@@ -87,14 +90,14 @@ function amarillosAltos(d0) {
     aunque la altura sea de aviso o de alerta.</p>`;
 }
 
-const bajada = !max ? "No hay pronóstico disponible ahora"
-  : V.nivel === "normal" ? `en los próximos ${V.dias.length} días`
+const bajada = !max ? "No hay pronósticos vigentes para las próximas horas"
+  : V.nivel === "normal" ? (V.dias.length === 1 ? "en el próximo día" : `en los próximos ${V.dias.length} días`)
   : `Lo más alto: ${nomDia(max.fecha).toLowerCase()} cerca de las ${max.hora} h`;
 const ahoraTxt = !V.ultima_real ? "" : `<div class="ahora">Última altura medida en San Fernando: <b style="white-space:nowrap">${m2(V.ultima_real.altura)}</b>
   (${cuando(V.ultima_real.hora)}${V.ultima_real.fresco === false ? ", dato viejo" : ""})</div>`;
 
 document.getElementById("app").innerHTML = cabecera("index.html") + avisosArriba() + `
-  <section class="veredicto n-${V.nivel}">
+  <section class="veredicto n-${clase}">
     <div class="icono">${nv.ico}</div>
     <div class="titulo">${nv.titulo}</div>
     <div class="bajada">${bajada}</div>
@@ -116,8 +119,8 @@ document.getElementById("app").innerHTML = cabecera("index.html") + avisosArriba
   <section class="botones">
     <a class="boton" href="${enl('probabilidades.html')}"><span class="ico">🎲</span>
       <span><b>Probabilidades</b><span class="d">${V.escalera ? "Chance de pasar cada altura, alrededor del pico" : "Chance de pasar 2,40 / 2,50 / 2,90 m cada día"}</span></span><span class="fl">›</span></a>
-    <a class="boton" href="${enl('resultados.html')}"><span class="ico">🎯</span>
-      <span><b>¿Cómo viene acertando?</b><span class="d">Lo que se previó contra lo que pasó</span></span><span class="fl">›</span></a>
+    <a class="boton" href="${enl('resultados.html')}"><span class="ico">📏</span>
+      <span><b>Pronóstico y medición</b><span class="d">Cuánto se alejó la marea real de lo previsto</span></span><span class="fl">›</span></a>
   </section>` + pie();
 </script>
 <script data-goatcounter="https://mareatigre.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
