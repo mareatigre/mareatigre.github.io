@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-19T11:00",
+ "actualizado": "2026-11-19T11:37",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -20,8 +20,15 @@ window.VIGIA = {
   "Pronóstico SHN": true,
   "Avisos SHN": true,
   "Alturas SHN": true,
-  "Modelo SHN": false,
+  "Modelo SHN": true,
   "Ríos INA": true
+ },
+ "modelo": {
+  "inicializado": "2026-11-17T03:00",
+  "horas": 56.6,
+  "usado": false,
+  "atrasado": true,
+  "vigente": false
  },
  "rio": {
   "estacion": "Rosario",
