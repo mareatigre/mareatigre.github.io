@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-19T10:00",
+ "actualizado": "2026-11-19T11:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-19T09:45",
-  "altura": 0.87,
+  "hora": "2026-11-19T10:45",
+  "altura": 0.84,
   "fresco": true
  },
  "fuentes": {
