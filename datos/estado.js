@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-19T17:00",
+ "actualizado": "2026-11-19T18:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-19T16:45",
-  "altura": 0.77,
+  "hora": "2026-11-19T17:45",
+  "altura": 0.72,
   "fresco": true
  },
  "fuentes": {
@@ -25,7 +25,7 @@ window.VIGIA = {
  },
  "modelo": {
   "inicializado": "2026-11-19T09:00",
-  "horas": 8.0,
+  "horas": 9.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -47,7 +47,7 @@ window.VIGIA = {
    "pico": 1.12,
    "eff": 1.12,
    "fuente": "modelo",
-   "plazo_h": 6.0,
+   "plazo_h": 5.0,
    "margen": 0.27,
    "etiqueta": null,
    "evento": "-",
@@ -69,8 +69,8 @@ window.VIGIA = {
    "pico": 1.65,
    "eff": 1.65,
    "fuente": "SHN",
-   "plazo_h": 11.0,
-   "margen": 0.25,
+   "plazo_h": 10.0,
+   "margen": 0.24,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -81,8 +81,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.33,
-    1.97
+    1.35,
+    1.95
    ]
   },
   {
@@ -91,7 +91,7 @@ window.VIGIA = {
    "pico": 1.46,
    "eff": 1.46,
    "fuente": "modelo",
-   "plazo_h": 34.0,
+   "plazo_h": 33.0,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
@@ -113,7 +113,7 @@ window.VIGIA = {
    "pico": 1.53,
    "eff": 1.53,
    "fuente": "modelo",
-   "plazo_h": 57.0,
+   "plazo_h": 56.0,
    "margen": 0.4,
    "etiqueta": null,
    "evento": "-",
@@ -135,7 +135,7 @@ window.VIGIA = {
    "pico": 1.92,
    "eff": 1.92,
    "fuente": "modelo",
-   "plazo_h": 82.0,
+   "plazo_h": 81.0,
    "margen": 0.43,
    "etiqueta": null,
    "evento": "-",
@@ -229,9 +229,9 @@ window.VIGIA = {
    {
     "desde": null,
     "hasta": 1.0,
-    "casos": 43,
-    "picos": 17,
-    "sesgo": 0.46,
+    "casos": 44,
+    "picos": 18,
+    "sesgo": 0.45,
     "pocos": false
    },
    {
@@ -267,7 +267,7 @@ window.VIGIA = {
     "pocos": true
    }
   ],
-  "total_picos": 40,
+  "total_picos": 41,
   "pocos_picos": 5
  }
 };
