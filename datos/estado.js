@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-20T19:00",
+ "actualizado": "2026-11-20T20:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-20T18:45",
-  "altura": 0.57,
+  "hora": "2026-11-20T19:45",
+  "altura": 0.55,
   "fresco": true
  },
  "fuentes": {
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-20T19:00",
-  "Avisos SHN": "2026-11-20T19:00",
-  "Alturas SHN": "2026-11-20T19:00",
-  "Modelo SHN": "2026-11-20T19:00",
-  "Ríos INA": "2026-11-20T19:00"
+  "Pronóstico SHN": "2026-11-20T20:00",
+  "Avisos SHN": "2026-11-20T20:00",
+  "Alturas SHN": "2026-11-20T20:00",
+  "Modelo SHN": "2026-11-20T20:00",
+  "Ríos INA": "2026-11-20T20:00"
  },
  "modelo": {
   "inicializado": "2026-11-20T09:00",
-  "horas": 10.0,
+  "horas": 11.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -54,7 +54,7 @@ window.VIGIA = {
    "pico": 0.9,
    "eff": 0.9,
    "fuente": "modelo",
-   "plazo_h": 4.0,
+   "plazo_h": 3.0,
    "margen": 0.27,
    "etiqueta": null,
    "evento": "-",
@@ -76,8 +76,8 @@ window.VIGIA = {
    "pico": 1.35,
    "eff": 1.35,
    "fuente": "SHN",
-   "plazo_h": 10.5,
-   "margen": 0.24,
+   "plazo_h": 9.5,
+   "margen": 0.23,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -88,8 +88,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.04,
-    1.66
+    1.05,
+    1.65
    ]
   },
   {
@@ -98,7 +98,7 @@ window.VIGIA = {
    "pico": 1.4,
    "eff": 1.4,
    "fuente": "modelo",
-   "plazo_h": 32.0,
+   "plazo_h": 31.0,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -120,7 +120,7 @@ window.VIGIA = {
    "pico": 1.69,
    "eff": 1.69,
    "fuente": "modelo",
-   "plazo_h": 56.0,
+   "plazo_h": 55.0,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
@@ -142,7 +142,7 @@ window.VIGIA = {
    "pico": 1.2,
    "eff": 1.2,
    "fuente": "modelo",
-   "plazo_h": 80.0,
+   "plazo_h": 79.0,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
