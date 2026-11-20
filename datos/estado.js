@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-20T13:00",
+ "actualizado": "2026-11-20T14:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-20T11:45",
-  "altura": 0.89,
+  "hora": "2026-11-20T13:45",
+  "altura": 0.99,
   "fresco": true
  },
  "fuentes": {
@@ -24,26 +24,26 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-20T13:00",
-  "Avisos SHN": "2026-11-20T13:00",
-  "Alturas SHN": "2026-11-20T13:00",
-  "Modelo SHN": "2026-11-20T13:00",
-  "Ríos INA": "2026-11-20T13:00"
+  "Pronóstico SHN": "2026-11-20T14:00",
+  "Avisos SHN": "2026-11-20T14:00",
+  "Alturas SHN": "2026-11-20T14:00",
+  "Modelo SHN": "2026-11-20T14:00",
+  "Ríos INA": "2026-11-20T14:00"
  },
  "modelo": {
   "inicializado": "2026-11-20T03:00",
-  "horas": 10.0,
+  "horas": 11.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
  },
  "rio": {
   "estacion": "Rosario",
-  "nivel": 4.89,
-  "tendencia": 0.051,
+  "nivel": 4.9,
+  "tendencia": 0.053,
   "ajuste": 0.0,
   "umbral": 5.0,
-  "eta_dias": 2.1388888888888986
+  "eta_dias": 1.8918918918918846
  },
  "escalera": null,
  "sube_al_final": false,
@@ -54,7 +54,7 @@ window.VIGIA = {
    "pico": 0.91,
    "eff": 0.91,
    "fuente": "modelo",
-   "plazo_h": 10.0,
+   "plazo_h": 9.0,
    "margen": 0.32,
    "etiqueta": null,
    "evento": "-",
@@ -76,7 +76,7 @@ window.VIGIA = {
    "pico": 1.44,
    "eff": 1.44,
    "fuente": "modelo",
-   "plazo_h": 14.0,
+   "plazo_h": 13.0,
    "margen": 0.36,
    "etiqueta": null,
    "evento": "-",
@@ -98,7 +98,7 @@ window.VIGIA = {
    "pico": 1.45,
    "eff": 1.45,
    "fuente": "modelo",
-   "plazo_h": 37.0,
+   "plazo_h": 36.0,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
@@ -120,7 +120,7 @@ window.VIGIA = {
    "pico": 1.6,
    "eff": 1.6,
    "fuente": "modelo",
-   "plazo_h": 63.0,
+   "plazo_h": 62.0,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
@@ -142,7 +142,7 @@ window.VIGIA = {
    "pico": 1.2,
    "eff": 1.2,
    "fuente": "modelo",
-   "plazo_h": 86.0,
+   "plazo_h": 85.0,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
