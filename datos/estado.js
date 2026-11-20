@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-20T07:00",
+ "actualizado": "2026-11-20T08:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-20T06:45",
-  "altura": 1.37,
+  "hora": "2026-11-20T07:45",
+  "altura": 1.25,
   "fresco": true
  },
  "fuentes": {
@@ -25,7 +25,7 @@ window.VIGIA = {
  },
  "modelo": {
   "inicializado": "2026-11-19T21:00",
-  "horas": 10.0,
+  "horas": 11.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -43,12 +43,12 @@ window.VIGIA = {
  "dias": [
   {
    "fecha": "2026-11-20",
-   "hora": "06:00",
-   "pico": 1.55,
-   "eff": 1.55,
+   "hora": "07:00",
+   "pico": 1.44,
+   "eff": 1.44,
    "fuente": "modelo",
    "plazo_h": 0.0,
-   "margen": 0.23,
+   "margen": 0.24,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -59,8 +59,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.26,
-    1.84
+    1.14,
+    1.74
    ]
   },
   {
@@ -69,8 +69,8 @@ window.VIGIA = {
    "pico": 1.49,
    "eff": 1.49,
    "fuente": "modelo",
-   "plazo_h": 20.0,
-   "margen": 0.37,
+   "plazo_h": 19.0,
+   "margen": 0.36,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -81,8 +81,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.02,
-    1.96
+    1.03,
+    1.95
    ]
   },
   {
@@ -91,14 +91,14 @@ window.VIGIA = {
    "pico": 1.41,
    "eff": 1.41,
    "fuente": "modelo",
-   "plazo_h": 44.0,
+   "plazo_h": 43.0,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "prob": {
-    "2.40": 1,
+    "2.40": 0,
     "2.50": 0,
     "2.90": 0
    },
@@ -113,20 +113,20 @@ window.VIGIA = {
    "pico": 1.61,
    "eff": 1.61,
    "fuente": "modelo",
-   "plazo_h": 68.0,
-   "margen": 0.41,
+   "plazo_h": 67.0,
+   "margen": 0.4,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": true,
    "prob": {
-    "2.40": 3,
+    "2.40": 2,
     "2.50": 1,
     "2.90": 0
    },
    "rango": [
-    1.09,
-    2.13
+    1.1,
+    2.12
    ]
   }
  ],
