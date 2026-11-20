@@ -15,6 +15,7 @@ const NIVELES = {
 // Horas sin actualizar a partir de las cuales se avisa que los datos están viejos (pedido de Fernando, 17/11).
 // Es el mismo criterio que usa vigia_marea.py para dar por "viejo" un dato de alturas horarias (6 h).
 // Contra: 6 h es media marea; por eso la hora de actualización se muestra siempre arriba.
+// (20/11) Se usa también para las fuentes: hasta 6 h sin leer, línea gris; más, cartel.
 const HORAS_VIEJO = 6;
 
 const m2 = x => x.toFixed(2).replace(".", ",") + " m";
@@ -64,6 +65,23 @@ function leyenda() {
 // Viene en estado.js (vigia_servidor.py v4). Con un estado.js viejo, sin ese dato, no se muestra nada.
 const versionModelo = () => V.modelo && V.modelo.inicializado ? `${ddmm(V.modelo.inicializado)} ${hhmm(V.modelo.inicializado)} h` : "";
 
+// (20/11) Fuentes que NO se leyeron en la última corrida, agrupadas por organismo, con la última vez que sí se
+// leyeron (`ultima_lectura`, de vigia_servidor.py v7). Por organismo se toma la lectura MÁS VIEJA de las que fallaron:
+// si el pronóstico es de las 08:00 y las alturas de las 10:00, decimos 08:00 (lo prudente).
+// t = null: no sabemos desde cuándo (estado.js viejo, o la fuente todavía no se leyó nunca con la v7).
+// Devuelve [{org, t, horas}], con horas = cuánto antes de la corrida fue esa lectura (null si no se sabe).
+const ORGANISMO = n => /SHN$/.test(n) ? "Hidrografía" : /INA$/.test(n) ? "INA" : n;
+function atrasos() {
+  const ul = V.ultima_lectura || {}, por = {};
+  for (const [n, ok] of Object.entries(V.fuentes || {})) {
+    if (ok) continue;
+    const o = ORGANISMO(n), t = ul[n] || null;
+    por[o] = !(o in por) ? t : (por[o] === null || t === null) ? null : (t < por[o] ? t : por[o]);
+  }
+  return Object.entries(por).map(([org, t]) =>
+    ({org, t, horas: t ? (new Date(V.actualizado) - new Date(t)) / 36e5 : null}));
+}
+
 function avisosArriba() {
   let h = "";
   if (V.prueba) h += `<div class="aviso-ejemplo">🧪 <b>MODO PRUEBA.</b> Datos reales de la corrida del ${ddmm(V.actualizado)} a las
@@ -77,10 +95,15 @@ function avisosArriba() {
   const horas = (Date.now() - new Date(V.actualizado)) / 36e5;
   if (!V.ejemplo && !V.prueba && horas > HORAS_VIEJO)
     h += `<div class="viejo">⏸️ Los datos tienen ${Math.floor(horas)} horas. El sistema puede estar sin conexión: consultá directamente al SHN.</div>`;
-  // Solo las fuentes que NO se pudieron leer. Un modelo viejo porque el SHN no lo actualizó no es una caída
-  // (el programa lo marca como leído) y se informa aparte, en gris, debajo de la hora de actualización.
-  const caidas = Object.entries(V.fuentes).filter(([, ok]) => !ok).map(([n]) => n);
-  if (caidas.length) h += `<div class="viejo">Sin leer en la última corrida: ${caidas.join(", ")}.</div>`;
+  // (20/11) Una fuente que no respondió en UNA corrida ya no saca cartel (pedido de Fernando: llamaba más la atención
+  // que el pronóstico y la falla es del sitio de Hidrografía, no nuestra). Va en gris debajo de la hora (cabecera()).
+  // El cartel vuelve solo si hace más de HORAS_VIEJO que no se puede leer: ahí sí cambia lo que la página sabe.
+  const SITIO = {"Hidrografía": `<a href="https://www.hidro.gob.ar/Oceanografia/Pronostico.asp">Hidrografía</a>`,
+                 "INA": `<a href="https://alerta.ina.gob.ar/a5/diario/reporte_diario">INA</a>`};
+  for (const a of atrasos())
+    if (a.horas !== null && a.horas > HORAS_VIEJO)
+      h += `<div class="viejo">⏸️ ${SITIO[a.org] || a.org} no responde desde hace ${Math.floor(a.horas)} horas.
+        Si hay riesgo de marea alta, consultá directamente su página.</div>`;
   return h;
 }
 
@@ -115,7 +138,10 @@ function cabecera(activa) {
   // Con estado.js de vigia_servidor v4 (sin `usado`/`atrasado`), vigente=false quería decir "viejo y no usado".
   const mo = V.modelo, atras = mo && (mo.atrasado ?? mo.vigente === false), usado = mo && (mo.usado ?? mo.vigente);
   const notaModelo = !atras ? "" : `<p class="actualizado chico mut" style="margin-top:-8px">Última versión del modelo de Hidrografía: ${versionModelo()}</p>`;
+  // (20/11) Organismo que no respondió en esta corrida: en gris, la última vez que se leyó bien.
+  const notaFuentes = atrasos().map(a => `<p class="actualizado chico mut" style="margin-top:-8px">` +
+    (a.t ? `Últimos datos de ${a.org}: ${cuando(a.t)}` : `${a.org} no respondió en la última consulta`) + `</p>`).join("");
   return `<header class="top"><a class="marca" href="${enl('index.html')}">🌊 Vigía de Marea · Tigre</a>
     <nav>${L.filter(l => l[0] !== activa).map(l => `<a href="${enl(l[0])}">${l[1]}</a>`).join("")}</nav></header>
-    <p class="actualizado">Última actualización: <b>${cuando(V.actualizado)}</b></p>${notaModelo}`;
+    <p class="actualizado">Última actualización: <b>${cuando(V.actualizado)}</b></p>${notaModelo}${notaFuentes}`;
 }
