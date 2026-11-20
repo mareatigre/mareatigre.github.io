@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-20T06:00",
+ "actualizado": "2026-11-20T07:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-20T05:45",
-  "altura": 1.5,
+  "hora": "2026-11-20T06:45",
+  "altura": 1.37,
   "fresco": true
  },
  "fuentes": {
@@ -25,7 +25,7 @@ window.VIGIA = {
  },
  "modelo": {
   "inicializado": "2026-11-19T21:00",
-  "horas": 9.0,
+  "horas": 10.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -43,12 +43,12 @@ window.VIGIA = {
  "dias": [
   {
    "fecha": "2026-11-20",
-   "hora": "05:00",
-   "pico": 1.63,
-   "eff": 1.63,
+   "hora": "06:00",
+   "pico": 1.55,
+   "eff": 1.55,
    "fuente": "modelo",
    "plazo_h": 0.0,
-   "margen": 0.22,
+   "margen": 0.23,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -59,8 +59,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.35,
-    1.91
+    1.26,
+    1.84
    ]
   },
   {
@@ -69,7 +69,7 @@ window.VIGIA = {
    "pico": 1.49,
    "eff": 1.49,
    "fuente": "modelo",
-   "plazo_h": 21.0,
+   "plazo_h": 20.0,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -91,7 +91,7 @@ window.VIGIA = {
    "pico": 1.41,
    "eff": 1.41,
    "fuente": "modelo",
-   "plazo_h": 45.0,
+   "plazo_h": 44.0,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
@@ -113,7 +113,7 @@ window.VIGIA = {
    "pico": 1.61,
    "eff": 1.61,
    "fuente": "modelo",
-   "plazo_h": 69.0,
+   "plazo_h": 68.0,
    "margen": 0.41,
    "etiqueta": null,
    "evento": "-",
@@ -493,9 +493,9 @@ window.VIGIA = {
    {
     "desde": 1.5,
     "hasta": 2.0,
-    "casos": 20,
-    "picos": 7,
-    "sesgo": 0.07,
+    "casos": 23,
+    "picos": 8,
+    "sesgo": 0.06,
     "pocos": false
    },
    {
@@ -515,7 +515,7 @@ window.VIGIA = {
     "pocos": true
    }
   ],
-  "total_picos": 41,
+  "total_picos": 42,
   "pocos_picos": 5
  }
 };
