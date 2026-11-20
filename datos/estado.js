@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-20T03:00",
+ "actualizado": "2026-11-20T04:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-20T02:45",
-  "altura": 1.67,
+  "hora": "2026-11-20T03:45",
+  "altura": 1.68,
   "fresco": true
  },
  "fuentes": {
@@ -24,8 +24,8 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "modelo": {
-  "inicializado": "2026-11-19T15:00",
-  "horas": 12.0,
+  "inicializado": "2026-11-19T21:00",
+  "horas": 7.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -47,8 +47,8 @@ window.VIGIA = {
    "pico": 1.6,
    "eff": 1.6,
    "fuente": "SHN",
-   "plazo_h": 1.0,
-   "margen": 0.16,
+   "plazo_h": 0.0,
+   "margen": 0.15,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -59,40 +59,18 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.4,
-    1.8
+    1.41,
+    1.79
    ]
   },
   {
    "fecha": "2026-11-21",
    "hora": "03:00",
-   "pico": 1.42,
-   "eff": 1.42,
+   "pico": 1.49,
+   "eff": 1.49,
    "fuente": "modelo",
-   "plazo_h": 24.0,
+   "plazo_h": 23.0,
    "margen": 0.37,
-   "etiqueta": null,
-   "evento": "-",
-   "compuesto": false,
-   "parcial": false,
-   "prob": {
-    "2.40": 0,
-    "2.50": 0,
-    "2.90": 0
-   },
-   "rango": [
-    0.94,
-    1.9
-   ]
-  },
-  {
-   "fecha": "2026-11-22",
-   "hora": "02:00",
-   "pico": 1.43,
-   "eff": 1.43,
-   "fuente": "modelo",
-   "plazo_h": 47.0,
-   "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -103,30 +81,52 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    0.93,
-    1.93
+    1.02,
+    1.96
+   ]
+  },
+  {
+   "fecha": "2026-11-22",
+   "hora": "03:00",
+   "pico": 1.41,
+   "eff": 1.41,
+   "fuente": "modelo",
+   "plazo_h": 47.0,
+   "margen": 0.38,
+   "etiqueta": null,
+   "evento": "-",
+   "compuesto": false,
+   "parcial": false,
+   "prob": {
+    "2.40": 1,
+    "2.50": 0,
+    "2.90": 0
+   },
+   "rango": [
+    0.92,
+    1.9
    ]
   },
   {
    "fecha": "2026-11-23",
    "hora": "03:00",
-   "pico": 1.86,
-   "eff": 1.86,
+   "pico": 1.61,
+   "eff": 1.61,
    "fuente": "modelo",
-   "plazo_h": 72.0,
-   "margen": 0.42,
+   "plazo_h": 71.0,
+   "margen": 0.41,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": true,
    "prob": {
-    "2.40": 10,
-    "2.50": 6,
-    "2.90": 1
+    "2.40": 3,
+    "2.50": 1,
+    "2.90": 0
    },
    "rango": [
-    1.33,
-    2.39
+    1.09,
+    2.13
    ]
   }
  ],
