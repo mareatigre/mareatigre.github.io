@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-20T21:00",
+ "actualizado": "2026-11-20T22:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,7 +12,7 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-20T20:45",
+  "hora": "2026-11-20T21:45",
   "altura": 0.54,
   "fresco": true
  },
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-20T21:00",
-  "Avisos SHN": "2026-11-20T21:00",
-  "Alturas SHN": "2026-11-20T21:00",
-  "Modelo SHN": "2026-11-20T21:00",
-  "Ríos INA": "2026-11-20T21:00"
+  "Pronóstico SHN": "2026-11-20T22:00",
+  "Avisos SHN": "2026-11-20T22:00",
+  "Alturas SHN": "2026-11-20T22:00",
+  "Modelo SHN": "2026-11-20T22:00",
+  "Ríos INA": "2026-11-20T22:00"
  },
  "modelo": {
   "inicializado": "2026-11-20T15:00",
-  "horas": 6.0,
+  "horas": 7.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -54,7 +54,7 @@ window.VIGIA = {
    "pico": 0.91,
    "eff": 0.91,
    "fuente": "modelo",
-   "plazo_h": 2.0,
+   "plazo_h": 1.0,
    "margen": 0.22,
    "etiqueta": null,
    "evento": "-",
@@ -76,8 +76,8 @@ window.VIGIA = {
    "pico": 1.35,
    "eff": 1.35,
    "fuente": "SHN",
-   "plazo_h": 8.5,
-   "margen": 0.22,
+   "plazo_h": 7.5,
+   "margen": 0.21,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -88,8 +88,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.06,
-    1.64
+    1.08,
+    1.62
    ]
   },
   {
@@ -98,7 +98,7 @@ window.VIGIA = {
    "pico": 1.41,
    "eff": 1.41,
    "fuente": "modelo",
-   "plazo_h": 30.0,
+   "plazo_h": 29.0,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -120,7 +120,7 @@ window.VIGIA = {
    "pico": 1.82,
    "eff": 1.82,
    "fuente": "modelo",
-   "plazo_h": 54.0,
+   "plazo_h": 53.0,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
@@ -142,7 +142,7 @@ window.VIGIA = {
    "pico": 1.22,
    "eff": 1.22,
    "fuente": "modelo",
-   "plazo_h": 90.0,
+   "plazo_h": 89.0,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
