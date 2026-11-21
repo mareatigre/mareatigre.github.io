@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-20T22:00",
+ "actualizado": "2026-11-20T23:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-20T22:00",
-  "Avisos SHN": "2026-11-20T22:00",
-  "Alturas SHN": "2026-11-20T22:00",
-  "Modelo SHN": "2026-11-20T22:00",
-  "Ríos INA": "2026-11-20T22:00"
+  "Pronóstico SHN": "2026-11-20T23:00",
+  "Avisos SHN": "2026-11-20T23:00",
+  "Alturas SHN": "2026-11-20T23:00",
+  "Modelo SHN": "2026-11-20T23:00",
+  "Ríos INA": "2026-11-20T23:00"
  },
  "modelo": {
   "inicializado": "2026-11-20T15:00",
-  "horas": 7.0,
+  "horas": 8.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -54,7 +54,7 @@ window.VIGIA = {
    "pico": 0.91,
    "eff": 0.91,
    "fuente": "modelo",
-   "plazo_h": 1.0,
+   "plazo_h": 0.0,
    "margen": 0.22,
    "etiqueta": null,
    "evento": "-",
@@ -72,12 +72,12 @@ window.VIGIA = {
   },
   {
    "fecha": "2026-11-21",
-   "hora": "05:30",
-   "pico": 1.35,
-   "eff": 1.35,
+   "hora": "05:00",
+   "pico": 1.55,
+   "eff": 1.55,
    "fuente": "SHN",
-   "plazo_h": 7.5,
-   "margen": 0.21,
+   "plazo_h": 6.0,
+   "margen": 0.2,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -88,8 +88,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.08,
-    1.62
+    1.29,
+    1.81
    ]
   },
   {
@@ -98,7 +98,7 @@ window.VIGIA = {
    "pico": 1.41,
    "eff": 1.41,
    "fuente": "modelo",
-   "plazo_h": 29.0,
+   "plazo_h": 28.0,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -120,7 +120,7 @@ window.VIGIA = {
    "pico": 1.82,
    "eff": 1.82,
    "fuente": "modelo",
-   "plazo_h": 53.0,
+   "plazo_h": 52.0,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
@@ -142,7 +142,7 @@ window.VIGIA = {
    "pico": 1.22,
    "eff": 1.22,
    "fuente": "modelo",
-   "plazo_h": 89.0,
+   "plazo_h": 88.0,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
