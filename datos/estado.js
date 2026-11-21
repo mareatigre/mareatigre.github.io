@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-21T18:00",
+ "actualizado": "2026-11-21T19:00",
  "referencia": "San Fernando",
  "nivel": "posible",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-21T17:45",
-  "altura": 0.8,
+  "hora": "2026-11-21T18:45",
+  "altura": 0.7,
   "fresco": true
  },
  "fuentes": {
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-21T18:00",
-  "Avisos SHN": "2026-11-21T18:00",
-  "Alturas SHN": "2026-11-21T18:00",
-  "Modelo SHN": "2026-11-21T18:00",
-  "Ríos INA": "2026-11-21T18:00"
+  "Pronóstico SHN": "2026-11-21T19:00",
+  "Avisos SHN": "2026-11-21T19:00",
+  "Alturas SHN": "2026-11-21T19:00",
+  "Modelo SHN": "2026-11-21T19:00",
+  "Ríos INA": "2026-11-21T19:00"
  },
  "modelo": {
   "inicializado": "2026-11-21T09:00",
-  "horas": 9.0,
+  "horas": 10.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -86,8 +86,8 @@ window.VIGIA = {
    "pico": 1.5,
    "eff": 1.5,
    "fuente": "SHN",
-   "plazo_h": 12.0,
-   "margen": 0.25,
+   "plazo_h": 11.0,
+   "margen": 0.24,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -99,8 +99,8 @@ window.VIGIA = {
     "3.70": 0
    },
    "rango": [
-    1.18,
-    1.82
+    1.19,
+    1.81
    ]
   },
   {
@@ -109,7 +109,7 @@ window.VIGIA = {
    "pico": 1.51,
    "eff": 1.51,
    "fuente": "modelo",
-   "plazo_h": 34.0,
+   "plazo_h": 33.0,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -132,7 +132,7 @@ window.VIGIA = {
    "pico": 1.26,
    "eff": 1.26,
    "fuente": "modelo",
-   "plazo_h": 77.0,
+   "plazo_h": 76.0,
    "margen": 0.41,
    "etiqueta": null,
    "evento": "-",
@@ -155,7 +155,7 @@ window.VIGIA = {
    "pico": 2.92,
    "eff": 2.92,
    "fuente": "modelo",
-   "plazo_h": 83.0,
+   "plazo_h": 82.0,
    "margen": 0.42,
    "etiqueta": "posible",
    "evento": "posible comp.",
