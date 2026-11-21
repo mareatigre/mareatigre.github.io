@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-21T14:00",
+ "actualizado": "2026-11-21T15:00",
  "referencia": "San Fernando",
  "nivel": "posible",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-21T13:45",
-  "altura": 0.64,
+  "hora": "2026-11-21T14:45",
+  "altura": 0.63,
   "fresco": true
  },
  "fuentes": {
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-21T14:00",
-  "Avisos SHN": "2026-11-21T14:00",
-  "Alturas SHN": "2026-11-21T14:00",
-  "Modelo SHN": "2026-11-21T14:00",
-  "Ríos INA": "2026-11-21T14:00"
+  "Pronóstico SHN": "2026-11-21T15:00",
+  "Avisos SHN": "2026-11-21T15:00",
+  "Alturas SHN": "2026-11-21T15:00",
+  "Modelo SHN": "2026-11-21T15:00",
+  "Ríos INA": "2026-11-21T15:00"
  },
  "modelo": {
   "inicializado": "2026-11-21T03:00",
-  "horas": 11.0,
+  "horas": 12.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -54,7 +54,7 @@ window.VIGIA = {
    "pico": 0.75,
    "eff": 0.75,
    "fuente": "modelo",
-   "plazo_h": 4.0,
+   "plazo_h": 3.0,
    "margen": 0.28,
    "etiqueta": null,
    "evento": "-",
@@ -76,7 +76,7 @@ window.VIGIA = {
    "pico": 1.42,
    "eff": 1.42,
    "fuente": "modelo",
-   "plazo_h": 15.0,
+   "plazo_h": 14.0,
    "margen": 0.35,
    "etiqueta": null,
    "evento": "-",
@@ -98,7 +98,7 @@ window.VIGIA = {
    "pico": 1.53,
    "eff": 1.53,
    "fuente": "modelo",
-   "plazo_h": 38.0,
+   "plazo_h": 37.0,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
@@ -120,7 +120,7 @@ window.VIGIA = {
    "pico": 1.29,
    "eff": 1.29,
    "fuente": "modelo",
-   "plazo_h": 74.0,
+   "plazo_h": 73.0,
    "margen": 0.41,
    "etiqueta": null,
    "evento": "-",
@@ -142,7 +142,7 @@ window.VIGIA = {
    "pico": 2.51,
    "eff": 2.51,
    "fuente": "modelo",
-   "plazo_h": 85.0,
+   "plazo_h": 84.0,
    "margen": 0.42,
    "etiqueta": "posible",
    "evento": "posible comp.",
