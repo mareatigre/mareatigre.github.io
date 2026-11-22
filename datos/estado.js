@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-21T20:00",
+ "actualizado": "2026-11-21T21:00",
  "referencia": "San Fernando",
  "nivel": "posible",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-21T19:45",
-  "altura": 0.62,
+  "hora": "2026-11-21T20:45",
+  "altura": 0.58,
   "fresco": true
  },
  "fuentes": {
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-21T20:00",
-  "Avisos SHN": "2026-11-21T20:00",
-  "Alturas SHN": "2026-11-21T20:00",
-  "Modelo SHN": "2026-11-21T20:00",
-  "Ríos INA": "2026-11-21T20:00"
+  "Pronóstico SHN": "2026-11-21T21:00",
+  "Avisos SHN": "2026-11-21T21:00",
+  "Alturas SHN": "2026-11-21T21:00",
+  "Modelo SHN": "2026-11-21T21:00",
+  "Ríos INA": "2026-11-21T21:00"
  },
  "modelo": {
-  "inicializado": "2026-11-21T09:00",
-  "horas": 11.0,
+  "inicializado": "2026-11-21T15:00",
+  "horas": 6.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -45,39 +45,29 @@ window.VIGIA = {
   "umbral": 5.0,
   "eta_dias": 1.8918918918918846
  },
- "escalera": {
-  "centro": 2.9,
-  "paso": 0.4,
-  "cols": [
-   2.5,
-   2.9,
-   3.3,
-   3.7
-  ]
- },
+ "escalera": null,
  "sube_al_final": false,
  "dias": [
   {
    "fecha": "2026-11-21",
-   "hora": "19:00",
-   "pico": 0.68,
-   "eff": 0.68,
+   "hora": "23:00",
+   "pico": 0.66,
+   "eff": 0.66,
    "fuente": "modelo",
-   "plazo_h": 0.0,
-   "margen": 0.23,
+   "plazo_h": 2.0,
+   "margen": 0.22,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "prob": {
+    "2.40": 0,
     "2.50": 0,
-    "2.90": 0,
-    "3.30": 0,
-    "3.70": 0
+    "2.90": 0
    },
    "rango": [
     0.38,
-    0.98
+    0.94
    ]
   },
   {
@@ -86,90 +76,86 @@ window.VIGIA = {
    "pico": 1.5,
    "eff": 1.5,
    "fuente": "SHN",
-   "plazo_h": 10.0,
+   "plazo_h": 9.0,
    "margen": 0.23,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "prob": {
+    "2.40": 0,
     "2.50": 0,
-    "2.90": 0,
-    "3.30": 0,
-    "3.70": 0
+    "2.90": 0
    },
    "rango": [
-    1.2,
-    1.8
+    1.21,
+    1.79
    ]
   },
   {
    "fecha": "2026-11-23",
    "hora": "04:00",
-   "pico": 1.51,
-   "eff": 1.51,
+   "pico": 1.49,
+   "eff": 1.49,
    "fuente": "modelo",
-   "plazo_h": 32.0,
-   "margen": 0.37,
+   "plazo_h": 31.0,
+   "margen": 0.36,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "prob": {
+    "2.40": 1,
     "2.50": 0,
-    "2.90": 0,
-    "3.30": 0,
-    "3.70": 0
+    "2.90": 0
    },
    "rango": [
-    1.03,
-    1.99
+    1.02,
+    1.96
    ]
   },
   {
    "fecha": "2026-11-24",
-   "hora": "23:00",
-   "pico": 1.26,
-   "eff": 1.26,
+   "hora": "04:00",
+   "pico": 1.21,
+   "eff": 1.21,
    "fuente": "modelo",
-   "plazo_h": 75.0,
-   "margen": 0.41,
+   "plazo_h": 55.0,
+   "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "prob": {
+    "2.40": 0,
     "2.50": 0,
-    "2.90": 0,
-    "3.30": 0,
-    "3.70": 0
+    "2.90": 0
    },
    "rango": [
-    0.73,
-    1.79
+    0.72,
+    1.7
    ]
   },
   {
    "fecha": "2026-11-25",
    "hora": "05:00",
-   "pico": 2.92,
-   "eff": 2.92,
+   "pico": 2.85,
+   "eff": 2.85,
    "fuente": "modelo",
-   "plazo_h": 81.0,
-   "margen": 0.42,
+   "plazo_h": 80.0,
+   "margen": 0.41,
    "etiqueta": "posible",
    "evento": "posible comp.",
    "compuesto": true,
    "parcial": true,
    "prob": {
-    "2.50": 84,
-    "2.90": 52,
-    "3.30": 18,
-    "3.70": 3
+    "2.40": 86,
+    "2.50": 80,
+    "2.90": 45
    },
    "rango": [
-    2.38,
-    3.46
+    2.32,
+    3.38
    ]
   }
  ],
@@ -515,9 +501,9 @@ window.VIGIA = {
    {
     "desde": null,
     "hasta": 1.0,
-    "casos": 44,
-    "picos": 18,
-    "sesgo": 0.45,
+    "casos": 45,
+    "picos": 19,
+    "sesgo": 0.44,
     "pocos": false
    },
    {
@@ -553,7 +539,7 @@ window.VIGIA = {
     "pocos": true
    }
   ],
-  "total_picos": 43,
+  "total_picos": 44,
   "pocos_picos": 5
  }
 };
