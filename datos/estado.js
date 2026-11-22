@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-22T14:00",
+ "actualizado": "2026-11-22T15:00",
  "referencia": "San Fernando",
  "nivel": "posible",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-22T13:45",
-  "altura": 0.64,
+  "hora": "2026-11-22T14:45",
+  "altura": 0.81,
   "fresco": true
  },
  "fuentes": {
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-22T14:00",
-  "Avisos SHN": "2026-11-22T14:00",
-  "Alturas SHN": "2026-11-22T14:00",
-  "Modelo SHN": "2026-11-22T14:00",
-  "Ríos INA": "2026-11-22T14:00"
+  "Pronóstico SHN": "2026-11-22T15:00",
+  "Avisos SHN": "2026-11-22T15:00",
+  "Alturas SHN": "2026-11-22T15:00",
+  "Modelo SHN": "2026-11-22T15:00",
+  "Ríos INA": "2026-11-22T15:00"
  },
  "modelo": {
   "inicializado": "2026-11-22T03:00",
-  "horas": 11.0,
+  "horas": 12.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -54,8 +54,8 @@ window.VIGIA = {
    "pico": 1.1,
    "eff": 1.1,
    "fuente": "SHN",
-   "plazo_h": 4.0,
-   "margen": 0.18,
+   "plazo_h": 3.0,
+   "margen": 0.17,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -66,8 +66,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    0.87,
-    1.33
+    0.88,
+    1.32
    ]
   },
   {
@@ -76,7 +76,7 @@ window.VIGIA = {
    "pico": 1.5,
    "eff": 1.5,
    "fuente": "modelo",
-   "plazo_h": 15.0,
+   "plazo_h": 14.0,
    "margen": 0.35,
    "etiqueta": null,
    "evento": "-",
@@ -98,7 +98,7 @@ window.VIGIA = {
    "pico": 1.32,
    "eff": 1.32,
    "fuente": "modelo",
-   "plazo_h": 50.0,
+   "plazo_h": 49.0,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
@@ -120,7 +120,7 @@ window.VIGIA = {
    "pico": 2.77,
    "eff": 2.77,
    "fuente": "modelo",
-   "plazo_h": 63.0,
+   "plazo_h": 62.0,
    "margen": 0.39,
    "etiqueta": "posible",
    "evento": "posible comp.",
@@ -142,7 +142,7 @@ window.VIGIA = {
    "pico": 1.42,
    "eff": 1.42,
    "fuente": "modelo",
-   "plazo_h": 85.0,
+   "plazo_h": 84.0,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
