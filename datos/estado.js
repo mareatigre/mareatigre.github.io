@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-22T03:00",
+ "actualizado": "2026-11-22T04:00",
  "referencia": "San Fernando",
  "nivel": "posible",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-22T02:45",
-  "altura": 1.11,
+  "hora": "2026-11-22T03:45",
+  "altura": 1.31,
   "fresco": true
  },
  "fuentes": {
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-22T03:00",
-  "Avisos SHN": "2026-11-22T03:00",
-  "Alturas SHN": "2026-11-22T03:00",
-  "Modelo SHN": "2026-11-22T03:00",
-  "Ríos INA": "2026-11-22T03:00"
+  "Pronóstico SHN": "2026-11-22T04:00",
+  "Avisos SHN": "2026-11-22T04:00",
+  "Alturas SHN": "2026-11-22T04:00",
+  "Modelo SHN": "2026-11-22T04:00",
+  "Ríos INA": "2026-11-22T04:00"
  },
  "modelo": {
-  "inicializado": "2026-11-21T15:00",
-  "horas": 12.0,
+  "inicializado": "2026-11-21T21:00",
+  "horas": 7.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -54,7 +54,7 @@ window.VIGIA = {
    "pico": 1.5,
    "eff": 1.5,
    "fuente": "SHN",
-   "plazo_h": 3.0,
+   "plazo_h": 2.0,
    "margen": 0.17,
    "etiqueta": null,
    "evento": "-",
@@ -66,15 +66,15 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.28,
-    1.72
+    1.29,
+    1.71
    ]
   },
   {
    "fecha": "2026-11-23",
-   "hora": "04:00",
-   "pico": 1.49,
-   "eff": 1.49,
+   "hora": "05:00",
+   "pico": 1.46,
+   "eff": 1.46,
    "fuente": "modelo",
    "plazo_h": 25.0,
    "margen": 0.36,
@@ -83,18 +83,18 @@ window.VIGIA = {
    "compuesto": false,
    "parcial": false,
    "prob": {
-    "2.40": 1,
+    "2.40": 0,
     "2.50": 0,
     "2.90": 0
    },
    "rango": [
-    1.02,
-    1.96
+    1.0,
+    1.92
    ]
   },
   {
    "fecha": "2026-11-24",
-   "hora": "04:00",
+   "hora": "05:00",
    "pico": 1.21,
    "eff": 1.21,
    "fuente": "modelo",
@@ -120,20 +120,20 @@ window.VIGIA = {
    "pico": 2.85,
    "eff": 2.85,
    "fuente": "modelo",
-   "plazo_h": 74.0,
-   "margen": 0.41,
+   "plazo_h": 73.0,
+   "margen": 0.4,
    "etiqueta": "posible",
    "evento": "posible comp.",
    "compuesto": true,
    "parcial": true,
    "prob": {
-    "2.40": 86,
-    "2.50": 80,
+    "2.40": 87,
+    "2.50": 81,
     "2.90": 45
    },
    "rango": [
-    2.32,
-    3.38
+    2.33,
+    3.37
    ]
   }
  ],
