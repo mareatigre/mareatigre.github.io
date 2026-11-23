@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-23T07:00",
+ "actualizado": "2026-11-23T08:00",
  "referencia": "San Fernando",
  "nivel": "posible",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-23T06:45",
-  "altura": 1.27,
+  "hora": "2026-11-23T07:45",
+  "altura": 1.15,
   "fresco": true
  },
  "fuentes": {
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-23T07:00",
-  "Avisos SHN": "2026-11-23T07:00",
-  "Alturas SHN": "2026-11-23T07:00",
-  "Modelo SHN": "2026-11-23T07:00",
-  "Ríos INA": "2026-11-23T07:00"
+  "Pronóstico SHN": "2026-11-23T08:00",
+  "Avisos SHN": "2026-11-23T08:00",
+  "Alturas SHN": "2026-11-23T08:00",
+  "Modelo SHN": "2026-11-23T08:00",
+  "Ríos INA": "2026-11-23T08:00"
  },
  "modelo": {
   "inicializado": "2026-11-22T21:00",
-  "horas": 10.0,
+  "horas": 11.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -51,11 +51,11 @@ window.VIGIA = {
   {
    "fecha": "2026-11-23",
    "hora": "07:00",
-   "pico": 1.4,
-   "eff": 1.4,
-   "fuente": "SHN",
+   "pico": 1.39,
+   "eff": 1.39,
+   "fuente": "modelo",
    "plazo_h": 0.0,
-   "margen": 0.15,
+   "margen": 0.23,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -66,8 +66,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.21,
-    1.59
+    1.09,
+    1.69
    ]
   },
   {
@@ -76,7 +76,7 @@ window.VIGIA = {
    "pico": 1.4,
    "eff": 1.4,
    "fuente": "modelo",
-   "plazo_h": 23.0,
+   "plazo_h": 22.0,
    "margen": 0.36,
    "etiqueta": null,
    "evento": "-",
@@ -98,7 +98,7 @@ window.VIGIA = {
    "pico": 2.56,
    "eff": 2.56,
    "fuente": "modelo",
-   "plazo_h": 46.0,
+   "plazo_h": 45.0,
    "margen": 0.38,
    "etiqueta": "posible",
    "evento": "posible comp.",
@@ -120,7 +120,7 @@ window.VIGIA = {
    "pico": 2.53,
    "eff": 2.53,
    "fuente": "modelo",
-   "plazo_h": 71.0,
+   "plazo_h": 70.0,
    "margen": 0.4,
    "etiqueta": "posible",
    "evento": "posible comp.",
