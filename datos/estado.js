@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-22T20:00",
+ "actualizado": "2026-11-22T21:00",
  "referencia": "San Fernando",
  "nivel": "posible",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-22T19:45",
-  "altura": 1.02,
+  "hora": "2026-11-22T20:45",
+  "altura": 0.91,
   "fresco": true
  },
  "fuentes": {
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-22T20:00",
-  "Avisos SHN": "2026-11-22T20:00",
-  "Alturas SHN": "2026-11-22T20:00",
-  "Modelo SHN": "2026-11-22T20:00",
-  "Ríos INA": "2026-11-22T20:00"
+  "Pronóstico SHN": "2026-11-22T21:00",
+  "Avisos SHN": "2026-11-22T21:00",
+  "Alturas SHN": "2026-11-22T21:00",
+  "Modelo SHN": "2026-11-22T21:00",
+  "Ríos INA": "2026-11-22T21:00"
  },
  "modelo": {
   "inicializado": "2026-11-22T09:00",
-  "horas": 11.0,
+  "horas": 12.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -50,12 +50,12 @@ window.VIGIA = {
  "dias": [
   {
    "fecha": "2026-11-22",
-   "hora": "19:00",
-   "pico": 0.92,
-   "eff": 0.92,
+   "hora": "20:00",
+   "pico": 0.83,
+   "eff": 0.83,
    "fuente": "modelo",
    "plazo_h": 0.0,
-   "margen": 0.23,
+   "margen": 0.24,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -66,8 +66,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    0.62,
-    1.22
+    0.52,
+    1.14
    ]
   },
   {
@@ -76,7 +76,7 @@ window.VIGIA = {
    "pico": 1.5,
    "eff": 1.5,
    "fuente": "modelo",
-   "plazo_h": 9.0,
+   "plazo_h": 8.0,
    "margen": 0.31,
    "etiqueta": null,
    "evento": "-",
@@ -98,7 +98,7 @@ window.VIGIA = {
    "pico": 1.31,
    "eff": 1.31,
    "fuente": "modelo",
-   "plazo_h": 33.0,
+   "plazo_h": 32.0,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -120,7 +120,7 @@ window.VIGIA = {
    "pico": 2.7,
    "eff": 2.7,
    "fuente": "modelo",
-   "plazo_h": 57.0,
+   "plazo_h": 56.0,
    "margen": 0.38,
    "etiqueta": "posible",
    "evento": "posible comp.",
@@ -142,7 +142,7 @@ window.VIGIA = {
    "pico": 1.57,
    "eff": 1.57,
    "fuente": "modelo",
-   "plazo_h": 81.0,
+   "plazo_h": 80.0,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
@@ -506,8 +506,8 @@ window.VIGIA = {
    {
     "desde": null,
     "hasta": 1.0,
-    "casos": 45,
-    "picos": 19,
+    "casos": 47,
+    "picos": 20,
     "sesgo": 0.44,
     "pocos": false
    },
@@ -544,7 +544,7 @@ window.VIGIA = {
     "pocos": true
    }
   ],
-  "total_picos": 45,
+  "total_picos": 46,
   "pocos_picos": 5
  }
 };
