@@ -50,14 +50,29 @@ function franjaDe(alt) {
 const nomFranja = f => f.desde == null ? `hasta ${m2(f.hasta)}` : f.hasta == null ? `más de ${m2(f.desde)}` : `${m2(f.desde).replace(" m", "")} a ${m2(f.hasta)}`;
 
 // Color de un día según la etiqueta que YA calcula el programa (no inventamos umbrales nuevos).
-function nivelDia(d) { return d.etiqueta || "normal"; }
+// (24/11, pedido de Fernando) El rojo queda solo para 2,90 m o más. El programa también da "alerta" con 2,40 m del SHN
+// más crecida fuerte del INA ("ALERTA comp."); en la página ese caso se muestra en naranja (aviso). No cambia el cálculo,
+// ni las probabilidades, ni los mensajes de vigia_marea.py: solo el color y el título.
+function nivelDia(d) {
+  const e = d.etiqueta || "normal";
+  return e === "alerta" && d.eff < V.umbrales.alerta ? "aviso" : e;
+}
+// Lo mismo para el nivel general. Solo se baja si TODOS los días en alerta quedan debajo de 2,90 y el agua no está
+// alta ahora (`ocurriendo`): si la alerta viene de otro lado (lo medido o un aviso del SHN sin día), se respeta.
+{
+  const enAlerta = V.dias.filter(d => d.etiqueta === "alerta");
+  if (V.nivel === "alerta" && !V.ocurriendo && enAlerta.length && enAlerta.every(d => d.eff < V.umbrales.alerta)) {
+    const ORD = ["normal", "posible", "aviso", "alerta"];
+    V.nivel = V.dias.map(nivelDia).reduce((a, b) => ORD.indexOf(b) > ORD.indexOf(a) ? b : a, "normal");
+  }
+}
 
 // Qué quiere decir cada color. El amarillo es "posible" aunque la altura sea alta: el programa nunca da
 // aviso ni alerta solo con el modelo (decisión del autor), hace falta el pronóstico oficial del SHN.
 function leyenda() {
   const L = [["normal", "Sin riesgo"], ["posible", "Posible: lo marca el modelo o el río, el SHN todavía no lo confirma"],
-             ["aviso", "Aviso: el SHN pronostica 2,50 m o más (o 2,40 con alguna señal de crecida en los ríos)"],
-             ["alerta", "Alerta: el SHN pronostica 2,90 m o más (o 2,40 con crecida fuerte de los ríos)"]];
+             ["aviso", "Aviso: el SHN pronostica 2,50 m o más (o 2,40 con crecida en los ríos)"],
+             ["alerta", "Alerta: el SHN pronostica 2,90 m o más"]];
   return `<ul class="leyenda">${L.map(([k, t]) => `<li><span class="pto" style="background:var(${NIVELES[k].color})"></span>${t}</li>`).join("")}</ul>`;
 }
 
