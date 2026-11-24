@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-24T08:00",
+ "actualizado": "2026-11-24T09:00",
  "referencia": "San Fernando",
  "nivel": "posible",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-24T07:45",
-  "altura": 1.57,
+  "hora": "2026-11-24T08:45",
+  "altura": 1.5,
   "fresco": true
  },
  "fuentes": {
@@ -24,15 +24,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-24T08:00",
-  "Avisos SHN": "2026-11-24T08:00",
-  "Alturas SHN": "2026-11-24T08:00",
-  "Modelo SHN": "2026-11-24T08:00",
-  "Ríos INA": "2026-11-24T08:00"
+  "Pronóstico SHN": "2026-11-24T09:00",
+  "Avisos SHN": "2026-11-24T09:00",
+  "Alturas SHN": "2026-11-24T09:00",
+  "Modelo SHN": "2026-11-24T09:00",
+  "Ríos INA": "2026-11-24T09:00"
  },
  "modelo": {
   "inicializado": "2026-11-23T21:00",
-  "horas": 11.0,
+  "horas": 12.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -54,20 +54,20 @@ window.VIGIA = {
    "pico": 2.07,
    "eff": 2.07,
    "fuente": "SHN",
-   "plazo_h": 12.0,
+   "plazo_h": 11.0,
    "margen": 0.24,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "prob": {
-    "2.40": 9,
-    "2.50": 4,
+    "2.40": 8,
+    "2.50": 3,
     "2.90": 0
    },
    "rango": [
-    1.76,
-    2.38
+    1.77,
+    2.37
    ]
   },
   {
@@ -76,7 +76,7 @@ window.VIGIA = {
    "pico": 2.5,
    "eff": 2.5,
    "fuente": "modelo",
-   "plazo_h": 21.0,
+   "plazo_h": 20.0,
    "margen": 0.35,
    "etiqueta": "posible",
    "evento": "posible comp.",
@@ -98,7 +98,7 @@ window.VIGIA = {
    "pico": 2.31,
    "eff": 2.31,
    "fuente": "modelo",
-   "plazo_h": 46.0,
+   "plazo_h": 45.0,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
@@ -120,7 +120,7 @@ window.VIGIA = {
    "pico": 1.58,
    "eff": 1.58,
    "fuente": "modelo",
-   "plazo_h": 70.0,
+   "plazo_h": 69.0,
    "margen": 0.4,
    "etiqueta": null,
    "evento": "-",
