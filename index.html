@@ -57,7 +57,22 @@ function tiraDias() {
     ${V.dias.some(d => d.parcial) ? '<p class="chico mut">* Día incompleto: el pronóstico no llega a cubrirlo entero.</p>' : ""}`;
 }
 
-// Caja de alerta: solo si hay algo. Dice qué, cuándo (San Fernando y Tigre) y entre qué alturas.
+// (24/11) Chance de pasar las alturas que importan, para la caja de alerta. Reemplaza al "Entre X y Y" (rango del 80 %):
+// el extremo de arriba se leía como un anuncio ("puede llegar a 2,95") cuando pasa 1 de cada 10 veces.
+// Son los mismos números que ya calcula el programa (d.prob), no hay cuentas nuevas.
+// Sin escalera: aviso y alerta (2,50 y 2,90). Con escalera (pico de 2,90 o más): las dos columnas de arriba del pico.
+const pct = p => p < 1 ? "menos de 1 %" : p > 99 ? "más de 99 %" : `${p} %`;
+function chances(d) {
+  const us = V.escalera ? COLS.filter(u => u > d.eff).slice(0, 2) : [V.umbrales.aviso, V.umbrales.alerta];
+  const L = us.filter(u => prob(d, u) != null).map(u => {
+    const nom = u === V.umbrales.aviso ? " (aviso)" : u === V.umbrales.alerta ? " (alerta)" : "";
+    return `<span class="ch"><b>${pct(prob(d, u))}</b> de pasar ${m2(u)}${nom}</span>`;
+  });
+  return L.length ? `<p class="chances">${L.join("")}</p>` : "";
+}
+
+// Caja de alerta: solo si hay algo. (24/11, pedido de Fernando) Primero, grande, CUÁNDO y CUÁNTO; después la chance de
+// pasar aviso/alerta; el resto (de dónde sale, río, aclaración) en una sola línea chica.
 function cajaAlerta() {
   if (V.nivel === "sin_datos") return `<section class="alerta-caja n-aviso"><h2>No se pudo leer ninguna fuente</h2>
     <p>Que no haya aviso <b>no</b> quiere decir que no haya riesgo. Mirá directamente el SHN y el INA (links al pie).</p></section>`;
@@ -66,18 +81,20 @@ function cajaAlerta() {
   if (!d) return `<section class="alerta-caja n-${V.nivel}"><h2>${nv.ico} ${V.ocurriendo ? "El agua ya está alta" : nv.titulo}</h2>
     ${V.ultima_real ? `<p>Última altura medida en San Fernando: <b>${m2(V.ultima_real.altura)}</b> (${cuando(V.ultima_real.hora)}).</p>` : ""}
     <p class="chico">Seguí los avisos del SHN y de Defensa Civil de Tigre. Esto es solo una ayuda para prepararse.</p></section>`;
-  const quien = d.fuente === "SHN" ? "el pronóstico oficial del SHN" : "el modelo del SHN (todavía no es pronóstico oficial)";
   const sost = V.dias.filter(x => x.eff >= V.umbrales.aviso).length;
+  const extras = [
+    d.fuente === "SHN" ? "Pronóstico oficial del SHN." : "Lo marca el modelo del SHN; todavía no es pronóstico oficial.",
+    sost > 1 ? `El agua se mantendría alta ${sost} días seguidos.` : "",
+    d.compuesto ? "El Delta viene crecido (INA): con sudestada drena peor y puede subir más." : "",
+    V.rio && V.rio.ajuste > 0 ? `Por el río alto (${V.rio.estacion} ${m2(V.rio.nivel)}) ya se le sumaron ${m2(V.rio.ajuste)}.` : ""
+  ].filter(Boolean).join(" ");
   return `<section class="alerta-caja n-${V.nivel}">
-    <h2>${nv.ico} ${nomDia(d.fecha)} ${ddmm(d.fecha)}: ${m2(d.eff)}</h2>
-    <p><b>Cuándo:</b> cerca de las ${d.hora} h en San Fernando; en Tigre, alrededor de las ${horaTigre(d.hora)} h.</p>
-    <p><b>Entre:</b> ${rango(d)} (rango probable).</p>
-    <p><b>Según:</b> ${quien}.</p>
-    ${sost > 1 ? `<p><b>Ojo:</b> el agua se mantendría alta ${sost} días seguidos.</p>` : ""}
-    ${d.compuesto ? `<p><b>Con crecida de los ríos:</b> el INA marca señal en el Delta; con sudestada el agua drena peor y puede subir más.</p>` : ""}
-    ${V.rio && V.rio.ajuste > 0 ? `<p><b>Río alto:</b> ${V.rio.estacion} está en ${m2(V.rio.nivel)}; por eso se suman ${m2(V.rio.ajuste)} a lo que dice el pronóstico.</p>` : ""}
+    <div class="cuando">${nomDia(d.fecha)} ${ddmm(d.fecha)} · ${d.hora} h</div>
+    <div class="cuanto"><b>${m2(d.eff)}</b> en San Fernando · en Tigre, a las ${horaTigre(d.hora)} h aprox.</div>
+    ${chances(d)}
+    <p class="chico">${extras}</p>
     ${amarillosAltos(d)}
-    <p class="chico">Seguí los avisos del SHN y de Defensa Civil de Tigre. Esto es solo una ayuda para prepararse.</p>
+    <p class="chico mut">Es una ayuda para prepararse: seguí al SHN y a Defensa Civil de Tigre.</p>
   </section>`;
 }
 
@@ -85,9 +102,8 @@ function cajaAlerta() {
 function amarillosAltos(d0) {
   const A = V.dias.filter(x => x !== d0 && nivelDia(x) === "posible" && x.eff >= V.umbrales.aviso);
   if (!A.length) return "";
-  return `<p><b>Por qué hay días en amarillo con agua alta:</b> ${A.map(x => nomDia(x.fecha).toLowerCase()).join(", ")}
-    solo los marca el modelo del SHN. Hasta que el SHN no los incluya en su pronóstico oficial, se muestran como “posible”,
-    aunque la altura sea de aviso o de alerta.</p>`;
+  return `<p class="chico"><b>Días en amarillo con agua alta</b> (${A.map(x => nomDia(x.fecha).toLowerCase()).join(", ")}):
+    solo los marca el modelo; pasan a aviso o alerta cuando el SHN los incluya en su pronóstico oficial.</p>`;
 }
 
 const bajada = !max ? "No hay pronósticos vigentes para las próximas horas"
@@ -109,7 +125,8 @@ document.getElementById("app").innerHTML = cabecera("index.html") + avisosArriba
     ${regla()}
     <p class="chico">Lo más alto previsto: <b>${m2(max.eff)}</b> ${elDia(max.fecha)} ${ddmm(max.fecha)}
       a las ${max.hora} h en San Fernando (en Tigre, aprox. una hora después).
-      La franja clara va de ${rango(max)}: ahí debería caer 8 de cada 10 veces.</p>
+      La franja clara es el margen de error: 8 de cada 10 veces el agua queda entre ${rango(max)};
+      1 de cada 10, por encima.</p>
       ${(() => { const f = franjaDe(max.eff); return f && f.pocos ? `<p class="chico"><b>Ojo:</b> el modelo tiene poca experiencia en
         alturas previstas de ${nomFranja(f)} (${f.picos === 0 ? "ningún pico medido" : f.picos + " pico" + (f.picos > 1 ? "s" : "") + " medido" + (f.picos > 1 ? "s" : "")}):
         tomá estos números con más cautela. <a href="${enl('resultados.html')}">Ver experiencia</a></p>` : ""; })()}
