@@ -85,3 +85,10 @@ footer ul{margin:4px 0;padding-left:18px} footer li{margin:3px 0}
 .pestanas button{flex:1;font:inherit;font-size:13.5px;padding:7px 2px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer}
 .pestanas button.on{background:var(--agua);border-color:var(--agua);color:#fff;font-weight:700}
 .pestanas button:disabled{opacity:.45;cursor:default}
+/* (24/11) Caja de alerta: cuándo y cuánto, grandes; las chances en renglones aparte; el resto en chico. */
+.alerta-caja .cuando{font-size:22px;font-weight:800;line-height:1.2}
+.alerta-caja .cuanto{font-size:16px;margin:4px 0 8px}
+.alerta-caja .cuanto b{font-size:20px}
+.alerta-caja p.chances{margin:6px 0 8px}
+.alerta-caja .ch{display:block;font-size:15px}
+.alerta-caja p.chico{font-size:13.5px}
