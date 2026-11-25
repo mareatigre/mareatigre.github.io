@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-25T10:59",
+ "actualizado": "2026-11-25T11:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -29,11 +29,11 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-25T10:59",
-  "Avisos SHN": "2026-11-25T10:59",
-  "Alturas SHN": "2026-11-25T10:59",
-  "Modelo SHN": "2026-11-25T10:59",
-  "Ríos INA": "2026-11-25T10:59"
+  "Pronóstico SHN": "2026-11-25T11:00",
+  "Avisos SHN": "2026-11-25T11:00",
+  "Alturas SHN": "2026-11-25T11:00",
+  "Modelo SHN": "2026-11-25T11:00",
+  "Ríos INA": "2026-11-25T11:00"
  },
  "modelo": {
   "inicializado": "2026-11-25T03:00",
