@@ -58,10 +58,14 @@ function bloque() {
   const arriba = dif.filter(x => x > 0).length;
   const prom = dif.reduce((a, b) => a + b, 0) / dif.length;
   const mayor = R.reduce((a, r) => Math.abs(r.real - r.previsto) > Math.abs(a.real - a.previsto) ? r : a);
+  // (25/11) Decir hacia dónde fue: antes "La diferencia más grande: 84 cm" iba justo después de "llegó más alto",
+  // y esos 84 cm habían sido para ABAJO.
+  const dm = mayor.real - mayor.previsto;
   return `<section class="card">
     <p style="margin:0 0 6px"><b>En ${arriba} de ${R.length} días</b> el agua llegó más alto de lo previsto ${nDias(L)} antes.
        En promedio, <b>${cm(prom)} ${prom >= 0 ? "más" : "menos"}</b>.</p>
-    <p class="chico" style="margin:0">La diferencia más grande: ${cm(mayor.real - mayor.previsto)} el ${ddmm(mayor.fecha)}.</p>
+    <p class="chico" style="margin:0">La diferencia más grande fue el ${ddmm(mayor.fecha)}: el agua llegó ${cm(dm)}
+       ${dm >= 0 ? "más alto" : "más bajo"} de lo previsto.</p>
   </section>
   <section class="card">${grafico()}<p class="chico mut" style="margin:4px 0 0">Altura en metros (San Fernando).</p></section>`;
 }
@@ -78,7 +82,8 @@ function elegir(l) {
 document.getElementById("app").innerHTML = cabecera("resultados.html") + avisosArriba() + `
   <h1>Pronóstico y medición</h1>
   <p class="chico">Cuánto se alejó la marea real de lo previsto con los datos de Hidrografía, en los últimos días.
-    Marea más alta de cada día en San Fernando: lo previsto con 1 a 4 días de anticipación y lo que se midió.</p>
+    Marea más alta de cada día en San Fernando: lo previsto con 1 a 4 días de anticipación y lo que se midió.
+    Solo días ya terminados: hoy se suma mañana.</p>
   <p class="chico" style="margin-bottom:4px"><b>Previsto con cuántos días de anticipación:</b></p>
   <div id="pest">${pestanas()}</div>
   <div id="bloque">${bloque()}</div>
@@ -94,7 +99,8 @@ document.getElementById("app").innerHTML = cabecera("resultados.html") + avisosA
     <p class="chico">Son pocos días y casi ninguno con marea alta: sirven para ver la tendencia, no para confiar ciegamente.
       La lectura real es una por hora, así que el pico verdadero puede haber sido un poco más alto.
       Cambiando de pestaña se ve si el pronóstico se aleja más cuanto antes se hace. A 4 días hay menos casos:
-      la curva del modelo llega justo a unos 4 días y muchas veces no alcanza a cubrir ese día.</p>
+      la curva del modelo llega justo a unos 4 días y muchas veces no alcanza a cubrir ese día; si cubre menos de 12 horas
+      (más o menos un ciclo de marea), ese día no se cuenta.</p>
   </details></section>` + pie();
 document.getElementById("pest").addEventListener("click", e => {
   const b = e.target.closest("button[data-l]");
