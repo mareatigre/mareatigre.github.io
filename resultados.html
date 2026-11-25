@@ -11,7 +11,10 @@
 // Previsto N días antes contra lo medido. `resultados_plazo` lo manda vigia_servidor v6 ({"1": [...], ..., "4": [...]});
 // con un estado.js anterior solo existe `resultados` (1 día) y las otras pestañas quedan apagadas.
 const RP = V.resultados_plazo || {"1": V.resultados};
-const PLAZOS = ["1", "2", "3", "4"];
+// (25/11, decisión de Fernando) Solo 1 a 3 días. Con 4 días de anticipación la curva del modelo casi nunca cubre el día
+// entero (dura ~4 días y el SHN la publica 5 a 8 h tarde): quedaban 3 días de 14. Esos días aparecen completos en la
+// pestaña de 3. El servidor sigue mandando "4" en resultados_plazo: para volver a mostrarla, agregar "4" acá.
+const PLAZOS = ["1", "2", "3"];
 let L = "1";
 let R = [];
 const nDias = l => l === "1" ? "1 día" : l + " días";
@@ -82,7 +85,7 @@ function elegir(l) {
 document.getElementById("app").innerHTML = cabecera("resultados.html") + avisosArriba() + `
   <h1>Pronóstico y medición</h1>
   <p class="chico">Cuánto se alejó la marea real de lo previsto con los datos de Hidrografía, en los últimos días.
-    Marea más alta de cada día en San Fernando: lo previsto con 1 a 4 días de anticipación y lo que se midió.
+    Marea más alta de cada día en San Fernando: lo previsto con 1 a 3 días de anticipación y lo que se midió.
     Solo días ya terminados: hoy se suma mañana.</p>
   <p class="chico" style="margin-bottom:4px"><b>Previsto con cuántos días de anticipación:</b></p>
   <div id="pest">${pestanas()}</div>
@@ -98,9 +101,9 @@ document.getElementById("app").innerHTML = cabecera("resultados.html") + avisosA
   <section class="card"><details><summary>Para leerlo bien</summary>
     <p class="chico">Son pocos días y casi ninguno con marea alta: sirven para ver la tendencia, no para confiar ciegamente.
       La lectura real es una por hora, así que el pico verdadero puede haber sido un poco más alto.
-      Cambiando de pestaña se ve si el pronóstico se aleja más cuanto antes se hace. A 4 días hay menos casos:
-      la curva del modelo llega justo a unos 4 días y muchas veces no alcanza a cubrir ese día; si cubre menos de 12 horas
-      (más o menos un ciclo de marea), ese día no se cuenta.</p>
+      Cambiando de pestaña se ve si el pronóstico se aleja más cuanto antes se hace. No hay pestaña de 4 días: con tanta
+      anticipación el pronóstico casi nunca cubre el día entero. Si un día queda cubierto menos de 12 horas (más o menos
+      un ciclo de marea), no se cuenta.</p>
   </details></section>` + pie();
 document.getElementById("pest").addEventListener("click", e => {
   const b = e.target.closest("button[data-l]");
