@@ -71,6 +71,16 @@ function nivelDia(d) {
     V.nivel = V.dias.map(nivelDia).reduce((a, b) => ORD.indexOf(b) > ORD.indexOf(a) ? b : a, "aviso");
   }
 }
+// (25/11) Un "posible" que sale solo de la bajante de hoy (día `cola`, servidor v8) no es un aviso: con el agua bajando,
+// el resto del día es más bajo. "posible" lo da solo el modelo, así que si todos los días en posible son cola, se recalcula
+// con los demás días. Lo medido (`ocurriendo`) no se toca.
+if (V.nivel === "posible" && !V.ocurriendo) {
+  const pos = V.dias.filter(d => d.etiqueta === "posible");
+  if (pos.length && pos.every(d => d.cola)) {
+    const ORD = ["normal", "posible", "aviso", "alerta"];
+    V.nivel = V.dias.filter(d => !d.cola).map(nivelDia).reduce((a, b) => ORD.indexOf(b) > ORD.indexOf(a) ? b : a, "normal");
+  }
+}
 
 // Qué quiere decir cada color. El amarillo es "posible" aunque la altura sea alta: el programa nunca da
 // aviso ni alerta solo con el modelo (decisión del autor), hace falta el pronóstico oficial del SHN.

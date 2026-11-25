@@ -9,7 +9,10 @@
 </head><body><main id="app"></main>
 <script>
 // "eff" = pico previsto + ajuste por río (lo mismo que usa el programa para las probabilidades).
-const max = V.dias.length ? V.dias.reduce((a, d) => d.eff > a.eff ? d : a) : null;
+// (25/11) Un día "cola" (el máximo del modelo cae en la primera hora: el agua viene bajando) no es una pleamar prevista:
+// no cuenta para "lo más alto previsto". Con un estado.js viejo (sin `cola`) todo sigue igual.
+const prev = V.dias.filter(d => !d.cola);
+const max = prev.length ? prev.reduce((a, d) => d.eff > a.eff ? d : a) : null;
 // Sin ningún día de pronóstico y sin nada que avisar: no es "no se esperan mareas altas", es "no sabemos los próximos días".
 const sinPron = !max && V.nivel === "normal";
 const clase = sinPron ? "sin_datos" : V.nivel;
@@ -46,13 +49,34 @@ function regla() {
 // Con 5 días no entran los nombres largos: "Miércoles" pasa a "Mié" (Hoy y Mañana quedan enteros).
 const corto = n => V.dias.length > 4 && n !== "Hoy" && n !== "Mañana" ? n.slice(0, 3) : n;
 
-function tiraDias() {
-  return `<div class="dias">${V.dias.map(d => `<div class="dia">
+// (25/11) Tarjeta de "Hoy". El programa solo mira lo que QUEDA del día; después de una pleamar alta eso es la bajante
+// (25/11: "2,05 a las 09:00" con 2,50 m medidos a las 07:45). Si lo medido hoy (`medido_hoy`, servidor v8) supera lo
+// que queda previsto, o si lo que queda es solo la bajante (`cola`), se muestra lo medido. Color por altura medida con
+// los umbrales de siempre (2,50 aviso / 2,90 alerta); por debajo, verde salvo que lo que queda del día marque otra cosa.
+const ORD_N = ["normal", "posible", "aviso", "alerta"];
+const nivelAltura = h => h >= V.umbrales.alerta ? "alerta" : h >= V.umbrales.aviso ? "aviso" : "normal";
+function tarjetaDia(d) {
+  const md = V.medido_hoy, hoy = nomDia(d.fecha) === "Hoy";
+  let alt = m2s(d.eff), hs = `${d.hora} h${d.parcial ? " *" : ""}`, nv = nivelDia(d), rg = V.escalera, cls = "";
+  if (hoy && md && (d.cola || md.altura >= d.eff)) {
+    const nd = d.cola ? "normal" : nivelDia(d), na = nivelAltura(md.altura);
+    alt = m2s(md.altura); hs = `medido ${hhmm(md.hora)}`; rg = false; cls = " medido";
+    nv = ORD_N.indexOf(na) > ORD_N.indexOf(nd) ? na : nd;
+  } else if (d.cola) {
+    alt = "—"; hs = "bajando"; rg = false; nv = "normal";
+  }
+  return `<div class="dia${cls}">
       <div class="nom">${corto(nomDia(d.fecha))}</div><div class="fec">${ddmm(d.fecha)}</div>
-      <div class="pto" style="background:var(${NIVELES[nivelDia(d)].color})"></div>
-      <div class="alt">${m2s(d.eff)}</div>
-      ${V.escalera ? `<div class="rg">${m2s(d.rango[0])}–${m2s(d.rango[1])}</div>` : ""}
-      <div class="hs">${d.hora} h${d.parcial ? " *" : ""}</div></div>`).join("")}</div>
+      <div class="pto" style="background:var(${NIVELES[nv].color})"></div>
+      <div class="alt">${alt}</div>
+      ${rg ? `<div class="rg">${m2s(d.rango[0])}–${m2s(d.rango[1])}</div>` : ""}
+      <div class="hs">${hs}</div></div>`;
+}
+
+function tiraDias() {
+  const medido = V.dias.some(d => nomDia(d.fecha) === "Hoy" && V.medido_hoy && (d.cola || V.medido_hoy.altura >= d.eff));
+  return `<div class="dias">${V.dias.map(tarjetaDia).join("")}</div>
+    ${medido ? '<p class="chico mut">Hoy: lo más alto que ya se midió en San Fernando (es más que lo que queda previsto).</p>' : ""}
     ${V.escalera ? '<p class="chico mut">Debajo de cada altura: el rango probable.</p>' : ""}
     ${V.dias.some(d => d.parcial) ? '<p class="chico mut">* Día incompleto: el pronóstico no llega a cubrirlo entero.</p>' : ""}`;
 }
@@ -77,7 +101,7 @@ function cajaAlerta() {
   if (V.nivel === "sin_datos") return `<section class="alerta-caja n-aviso"><h2>No se pudo leer ninguna fuente</h2>
     <p>Que no haya aviso <b>no</b> quiere decir que no haya riesgo. Mirá directamente el SHN y el INA (links al pie).</p></section>`;
   if (V.nivel === "normal") return "";
-  const d = V.dias.filter(x => nivelDia(x) === V.nivel)[0];
+  const d = V.dias.filter(x => !x.cola && nivelDia(x) === V.nivel)[0];
   // Con el agua ya alta, la caja habla de lo MEDIDO (no del pico previsto, que puede haber quedado corto).
   if (!d || V.ocurriendo) return `<section class="alerta-caja n-${V.nivel}"><h2>${nv.ico} ${V.ocurriendo ? "El agua ya está alta" : nv.titulo}</h2>
     ${V.ultima_real ? `<p>Última altura medida en San Fernando: <b>${m2(V.ultima_real.altura)}</b> (${cuando(V.ultima_real.hora)}).</p>` : ""}
