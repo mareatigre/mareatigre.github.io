@@ -78,7 +78,8 @@ function cajaAlerta() {
     <p>Que no haya aviso <b>no</b> quiere decir que no haya riesgo. Mirá directamente el SHN y el INA (links al pie).</p></section>`;
   if (V.nivel === "normal") return "";
   const d = V.dias.filter(x => nivelDia(x) === V.nivel)[0];
-  if (!d) return `<section class="alerta-caja n-${V.nivel}"><h2>${nv.ico} ${V.ocurriendo ? "El agua ya está alta" : nv.titulo}</h2>
+  // Con el agua ya alta, la caja habla de lo MEDIDO (no del pico previsto, que puede haber quedado corto).
+  if (!d || V.ocurriendo) return `<section class="alerta-caja n-${V.nivel}"><h2>${nv.ico} ${V.ocurriendo ? "El agua ya está alta" : nv.titulo}</h2>
     ${V.ultima_real ? `<p>Última altura medida en San Fernando: <b>${m2(V.ultima_real.altura)}</b> (${cuando(V.ultima_real.hora)}).</p>` : ""}
     <p class="chico">Seguí los avisos del SHN y de Defensa Civil de Tigre. Esto es solo una ayuda para prepararse.</p></section>`;
   const sost = V.dias.filter(x => x.eff >= V.umbrales.aviso).length;

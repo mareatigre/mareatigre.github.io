@@ -57,13 +57,18 @@ function nivelDia(d) {
   const e = d.etiqueta || "normal";
   return e === "alerta" && d.eff < V.umbrales.alerta ? "aviso" : e;
 }
-// Lo mismo para el nivel general. Solo se baja si TODOS los días en alerta quedan debajo de 2,90 y el agua no está
-// alta ahora (`ocurriendo`): si la alerta viene de otro lado (lo medido o un aviso del SHN sin día), se respeta.
+// Lo mismo para el nivel general (25/11: también cuando la alerta sale de lo MEDIDO). Queda en rojo solo si algún día
+// previsto llega a 2,90 m o si lo medido ahora llega a 2,90 m. Única excepción: alerta sin días en alerta y sin el agua
+// alta ahora (p. ej. un aviso del SHN que no cae en ningún día): no sabemos la altura, se respeta.
 {
-  const enAlerta = V.dias.filter(d => d.etiqueta === "alerta");
-  if (V.nivel === "alerta" && !V.ocurriendo && enAlerta.length && enAlerta.every(d => d.eff < V.umbrales.alerta)) {
+  const A = V.umbrales.alerta, enAlerta = V.dias.filter(d => d.etiqueta === "alerta");
+  const previstoAlto = enAlerta.some(d => d.eff >= A);
+  const medidoAlto = V.ocurriendo && V.ultima_real && V.ultima_real.altura >= A;
+  const sinAltura = !enAlerta.length && !V.ocurriendo;
+  if (V.nivel === "alerta" && !previstoAlto && !medidoAlto && !sinAltura) {
     const ORD = ["normal", "posible", "aviso", "alerta"];
-    V.nivel = V.dias.map(nivelDia).reduce((a, b) => ORD.indexOf(b) > ORD.indexOf(a) ? b : a, "normal");
+    // Como mínimo aviso: el programa lo marcó alerta, así que algo alto hay (no puede quedar en amarillo o verde).
+    V.nivel = V.dias.map(nivelDia).reduce((a, b) => ORD.indexOf(b) > ORD.indexOf(a) ? b : a, "aviso");
   }
 }
 
