@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-25T11:12",
+ "actualizado": "2026-11-25T12:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,8 +12,8 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-25T10:45",
-  "altura": 2.18,
+  "hora": "2026-11-25T11:45",
+  "altura": 1.98,
   "fresco": true
  },
  "medido_hoy": {
@@ -29,15 +29,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-25T11:12",
-  "Avisos SHN": "2026-11-25T11:12",
-  "Alturas SHN": "2026-11-25T11:12",
-  "Modelo SHN": "2026-11-25T11:12",
-  "Ríos INA": "2026-11-25T11:12"
+  "Pronóstico SHN": "2026-11-25T12:00",
+  "Avisos SHN": "2026-11-25T12:00",
+  "Alturas SHN": "2026-11-25T12:00",
+  "Modelo SHN": "2026-11-25T12:00",
+  "Ríos INA": "2026-11-25T12:00"
  },
  "modelo": {
   "inicializado": "2026-11-25T03:00",
-  "horas": 8.2,
+  "horas": 9.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -59,8 +59,8 @@ window.VIGIA = {
    "pico": 1.6,
    "eff": 1.6,
    "fuente": "SHN",
-   "plazo_h": 8.8,
-   "margen": 0.22,
+   "plazo_h": 8.0,
+   "margen": 0.21,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -72,8 +72,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.32,
-    1.88
+    1.33,
+    1.87
    ]
   },
   {
@@ -82,7 +82,7 @@ window.VIGIA = {
    "pico": 2.37,
    "eff": 2.37,
    "fuente": "modelo",
-   "plazo_h": 19.8,
+   "plazo_h": 19.0,
    "margen": 0.35,
    "etiqueta": null,
    "evento": "-",
@@ -105,7 +105,7 @@ window.VIGIA = {
    "pico": 1.47,
    "eff": 1.47,
    "fuente": "modelo",
-   "plazo_h": 43.8,
+   "plazo_h": 43.0,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
@@ -128,7 +128,7 @@ window.VIGIA = {
    "pico": 1.07,
    "eff": 1.07,
    "fuente": "modelo",
-   "plazo_h": 80.8,
+   "plazo_h": 80.0,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
@@ -151,7 +151,7 @@ window.VIGIA = {
    "pico": 0.62,
    "eff": 0.62,
    "fuente": "modelo",
-   "plazo_h": 84.8,
+   "plazo_h": 84.0,
    "margen": 0.43,
    "etiqueta": null,
    "evento": "-",
@@ -498,13 +498,13 @@ window.VIGIA = {
    {
     "desde": 2.5,
     "hasta": null,
-    "casos": 0,
-    "picos": 0,
-    "sesgo": null,
+    "casos": 4,
+    "picos": 1,
+    "sesgo": -0.17,
     "pocos": true
    }
   ],
-  "total_picos": 50,
+  "total_picos": 51,
   "pocos_picos": 5
  }
 };
