@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-26T11:00",
+ "actualizado": "2026-11-26T11:11",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -30,15 +30,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-26T11:00",
-  "Avisos SHN": "2026-11-26T11:00",
-  "Alturas SHN": "2026-11-26T11:00",
-  "Modelo SHN": "2026-11-26T11:00",
-  "Ríos INA": "2026-11-26T11:00"
+  "Pronóstico SHN": "2026-11-26T11:11",
+  "Avisos SHN": "2026-11-26T11:11",
+  "Alturas SHN": "2026-11-26T11:11",
+  "Modelo SHN": "2026-11-26T11:11",
+  "Ríos INA": "2026-11-26T11:11"
  },
  "modelo": {
   "inicializado": "2026-11-26T03:00",
-  "horas": 8.0,
+  "horas": 8.2,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -60,7 +60,7 @@ window.VIGIA = {
    "pico": 2.39,
    "eff": 2.39,
    "fuente": "SHN",
-   "plazo_h": 10.5,
+   "plazo_h": 10.3,
    "margen": 0.23,
    "etiqueta": null,
    "evento": "-",
@@ -73,8 +73,8 @@ window.VIGIA = {
     "2.90": 1
    },
    "rango": [
-    2.09,
-    2.69
+    2.1,
+    2.68
    ]
   },
   {
@@ -83,7 +83,7 @@ window.VIGIA = {
    "pico": 1.33,
    "eff": 1.33,
    "fuente": "modelo",
-   "plazo_h": 13.0,
+   "plazo_h": 12.8,
    "margen": 0.31,
    "etiqueta": null,
    "evento": "-",
@@ -106,7 +106,7 @@ window.VIGIA = {
    "pico": 1.08,
    "eff": 1.08,
    "fuente": "modelo",
-   "plazo_h": 57.0,
+   "plazo_h": 56.8,
    "margen": 0.38,
    "etiqueta": null,
    "evento": "-",
@@ -129,7 +129,7 @@ window.VIGIA = {
    "pico": 1.22,
    "eff": 1.22,
    "fuente": "modelo",
-   "plazo_h": 81.0,
+   "plazo_h": 80.8,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
@@ -152,7 +152,7 @@ window.VIGIA = {
    "pico": 0.84,
    "eff": 0.84,
    "fuente": "modelo",
-   "plazo_h": 85.0,
+   "plazo_h": 84.8,
    "margen": 0.43,
    "etiqueta": null,
    "evento": "-",
@@ -530,66 +530,107 @@ window.VIGIA = {
     "plazo": 0,
     "chance": 0,
     "n": 68,
+    "rango": [
+     1.34,
+     1.73
+    ],
+    "mas_bajo": 1.09,
     "bajo_ref": false
    },
    {
     "t": "2026-11-27T06:00",
+    "t_mod": "2026-11-27T03:00",
     "altura": 1.0,
     "fuente": "modelo",
     "corr_h": 3.0,
     "plazo": 1,
     "chance": 0,
     "n": 49,
+    "rango": [
+     0.93,
+     1.28
+    ],
+    "mas_bajo": 0.81,
     "bajo_ref": false
    },
    {
     "t": "2026-11-27T18:00",
+    "t_mod": "2026-11-27T15:00",
     "altura": 0.28,
     "fuente": "modelo",
     "corr_h": 3.0,
     "plazo": 2,
     "chance": 32,
     "n": 37,
+    "rango": [
+     0.3,
+     0.56
+    ],
+    "mas_bajo": 0.13,
     "bajo_ref": true
    },
    {
     "t": "2026-11-28T06:00",
+    "t_mod": "2026-11-28T03:00",
     "altura": 0.38,
     "fuente": "modelo",
     "corr_h": 3.0,
     "plazo": 2,
     "chance": 11,
     "n": 37,
+    "rango": [
+     0.4,
+     0.66
+    ],
+    "mas_bajo": 0.23,
     "bajo_ref": true
    },
    {
     "t": "2026-11-28T18:00",
+    "t_mod": "2026-11-28T15:00",
     "altura": 0.35,
     "fuente": "modelo",
     "corr_h": 3.0,
     "plazo": 2,
     "chance": 14,
     "n": 37,
+    "rango": [
+     0.37,
+     0.63
+    ],
+    "mas_bajo": 0.2,
     "bajo_ref": true
    },
    {
     "t": "2026-11-29T06:00",
+    "t_mod": "2026-11-29T03:00",
     "altura": 0.58,
     "fuente": "modelo",
     "corr_h": 3.0,
     "plazo": 3,
     "chance": 0,
     "n": 26,
+    "rango": [
+     0.57,
+     0.94
+    ],
+    "mas_bajo": 0.49,
     "bajo_ref": false
    },
    {
     "t": "2026-11-29T18:00",
+    "t_mod": "2026-11-29T15:00",
     "altura": 0.41,
     "fuente": "modelo",
     "corr_h": 3.0,
     "plazo": 4,
     "chance": 38,
     "n": 8,
+    "rango": [
+     0.17,
+     0.68
+    ],
+    "mas_bajo": 0.16,
     "bajo_ref": true
    }
   ],
