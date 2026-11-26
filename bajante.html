@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bajante · Vigía de Marea Tigre</title>
+<link rel="stylesheet" href="estilo.css">
+<script src="datos/estado.js"></script>
+<script src="datos/ejemplos.js"></script>
+<script src="comun.js"></script>
+<style>
+/* (26/11) Pestaña Bajante: informativa, sin rojos. Solo se marca suave (amarillo) lo que podría quedar bajo la referencia. */
+.bj{display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.bj:last-child{border-bottom:0}
+.bj .h{font-size:22px;font-weight:800;min-width:72px}
+.bj .a{font-size:20px;font-weight:700;color:var(--agua);white-space:nowrap}
+.bj .d{font-size:12.5px;color:var(--ink2);margin-left:auto;text-align:right;line-height:1.35}
+.bj.bajo{background:var(--pos-bg);margin:0 -16px;padding:10px 16px;border-left:4px solid var(--pos)}
+.bj.medida .h,.bj.medida .a{font-style:italic}
+.chip{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:0 6px;color:var(--mut)}
+.exp td,.exp th{font-size:13.5px}
+.movio{background:var(--pos-bg);border:1px solid var(--pos);border-radius:10px;padding:8px 10px;font-size:13.5px;margin-top:10px}
+</style>
+</head><body><main id="app"></main>
+<script>
+const B = V.bajante;
+const m2b = x => x.toFixed(2).replace(".", ",");
+const cm = x => Math.round(Math.abs(x) * 100) + " cm";
+// Hora de Tigre: +1 h aprox. (criterio de Fernando, el mismo de las pleamares; para la bajante no hay datos).
+const horaT = s => horaTigre(hhmm(s));
+
+function fila(b) {
+  const peor = b.peor == null ? "" : `<br>en el peor caso visto: <b>${m2b(b.peor)}</b>`;
+  const fuente = b.fuente === "SHN" ? `<span class="chip">SHN</span>` : `<span class="chip">modelo ⏱</span>`;
+  return `<div class="bj${b.bajo_ref ? " bajo" : ""}">
+    <span class="h">${hhmm(b.t)}</span><span class="a">${m2b(b.altura)} m</span>
+    <span class="d">${b.bajo_ref ? "🔻 " : ""}Tigre ~${horaT(b.t)} ${fuente}${peor}</span></div>`;
+}
+function filaMedida(b) {
+  return `<div class="bj medida"><span class="h">${hhmm(b.t)}</span><span class="a">${m2b(b.altura)} m</span>
+    <span class="d">medida en San Fernando<br>(ya pasó)</span></div>`;
+}
+
+function porDia() {
+  const dias = {};
+  for (const b of B.medidas_hoy || []) (dias[b.t.slice(0, 10)] ||= []).push([b.t, filaMedida(b)]);
+  for (const b of B.proximas) (dias[b.t.slice(0, 10)] ||= []).push([b.t, fila(b)]);
+  const k = Object.keys(dias).sort();
+  if (!k.length) return `<section class="card"><p>No hay bajantes previstas ahora (sin pronóstico del SHN ni curva del modelo).</p></section>`;
+  return k.map(d => `<section class="card"><h2>${nomDia(d)} <span class="mut" style="font-weight:400">${ddmm(d)}</span></h2>
+    ${dias[d].sort((a, b) => a[0] < b[0] ? -1 : 1).map(x => x[1]).join("")}</section>`).join("");
+}
+
+function ahoraTxt() {
+  const a = B.ahora;
+  if (!a) return "";
+  const va = a.va === "subiendo" ? "subiendo ↑" : a.va === "bajando" ? "bajando ↓" : a.va === "quieta" ? "casi quieta" : "";
+  return `<p class="ahora">Ahora en San Fernando: <b>${m2(a.altura)}</b> (${cuando(a.hora)})${va ? `, <b>${va}</b>` : ""}.</p>`;
+}
+
+function experiencia() {
+  const E = B.experiencia, m1 = E.modelo["1"], h = E.hora, s = E.shn;
+  const filas = ["1", "2", "3"].map(L => {
+    const m = E.modelo[L];
+    return `<tr><td>${L} día${L === "1" ? "" : "s"} antes</td><td>${m.n}</td>
+      <td>${m.n ? m.bajo_mas : "–"}</td><td>${m.n && m.peor < 0 ? cm(m.peor) : "–"}</td></tr>`;
+  }).join("") + `<tr><td>SHN (próximas horas)</td><td>${s.n}</td><td>${s.n ? s.bajo_mas : "–"}</td><td>${s.n && s.peor < 0 ? cm(s.peor) : "–"}</td></tr>`;
+  const sa = B.semana_antes;
+  const movio = B.se_movio && B.se_movio.length ? `<div class="movio">⚠️ <b>La experiencia cambió esta semana:</b> ${B.se_movio.join("; ")}.
+    Puede ser que el río o el tiempo estén distintos. Los números de esta página ya usan lo nuevo.</div>` : "";
+  return `<section class="card"><h2>¿Cuánto se pasa para abajo?</h2>
+    ${E.medidas && E.mas_baja ? `<p class="chico">De ${E.medidas} bajantes medidas en San Fernando (${ddmm(E.desde)} al ${ddmm(E.hasta)}),
+      ${E.bajo_ref} bajaron de ${m2(B.ref)}. La más baja: <b>${m2(E.mas_baja.altura)}</b> el ${ddmm(E.mas_baja.hora)}.</p>`
+      : `<p class="chico">Todavía no hay bajantes medidas guardadas.</p>`}
+    ${m1.n ? `<p class="chico">Lo normal es que el agua quede <b>más alta</b> que lo previsto (${cm(m1.promedio)} en promedio, 1 día antes).
+      Pero ${m1.bajo_mas} de ${m1.n} veces bajó más${m1.peor < 0 ? `; la peor, <b>${cm(m1.peor)}</b> más (${ddmm(m1.peor_fecha)})` : ""}.</p>` : ""}
+    <table class="exp"><tr><th>Pronóstico</th><th>Casos</th><th>Bajó más</th><th>La peor</th></tr>${filas}</table>
+    <p class="chico mut">“En el peor caso visto” = lo previsto menos la peor de esa columna (con ${B.min_casos} casos o más).
+      Hace ${sa.dias} días era: corrección de hora ${sa.hora.toFixed(1).replace(".", ",")} h${sa.n_1d ? `, peor a 1 día ${cm(sa.peor_1d)}` : ""}.</p>
+    ${movio}</section>`;
+}
+
+const notaHora = () => {
+  const h = B.experiencia.hora;
+  return h.aplicada ? `<p class="chico">⏱️ <b>Hora corregida (modelo ⏱):</b> el modelo del SHN marca la bajante antes de lo que después se mide.
+    Según ${h.n} bajantes, el agua real llega unas ${h.mediana.toFixed(1).replace(".", ",")} h más tarde (${h.mas_tarde} de ${h.n} veces llegó después),
+    así que a las del modelo se les suman ${h.aplicada.toFixed(1).replace(".", ",")} h. Las del SHN van tal cual. En Tigre, aprox. una hora después.</p>`
+    : `<p class="chico">⏱️ Todavía no hay casos suficientes para corregir la hora del modelo: va tal cual la publica el SHN.</p>`;
+};
+
+document.getElementById("app").innerHTML = cabecera("bajante.html") + avisosArriba() + (!B ? `
+  <h1>Bajante</h1><section class="card"><p>Todavía no hay datos de bajantes en esta actualización.</p></section>` : `
+  <h1>Bajante</h1>
+  <p class="chico">Para los que navegamos el Delta: las bajantes de cada día en San Fernando, con la hora y la altura.
+    Es informativo: no es un aviso.</p>
+  ${ahoraTxt()}
+  ${porDia()}
+  <section class="card">
+    ${notaHora()}
+    <p class="chico">🔻 <b>Amarillo:</b> la bajante, o su peor caso visto, queda por debajo de <b>${m2(B.ref)}</b>
+      (referencia del Vigía para navegar, no es un umbral oficial).</p>
+  </section>
+  ${experiencia()}
+  <section class="card"><details><summary>Para leerlo bien</summary>
+    <p class="chico">Las alturas son del Modelo de Altura Total o del pronóstico del SHN, sin corregir. La hora del modelo sí se corrige
+      con lo medido, y la corrección se recalcula sola cada hora con todo lo guardado.</p>
+    <p class="chico"><b>Qué puede fallar:</b> la experiencia es de pocas semanas${B.experiencia.rio_rosario ? `, con el Paraná alto
+      (Rosario entre ${m2(B.experiencia.rio_rosario[0])} y ${m2(B.experiencia.rio_rosario[1])})` : ""} y sin ninguna bajante extraordinaria.
+      Con el río bajo y viento del norte el agua puede bajar bastante más: el peor caso visto <b>no</b> es el peor posible.
+      La hora real se conoce de a una hora (las lecturas son una por hora). Algunos días el modelo acierta la hora y la corrección lo corre de más.</p>
+    <p class="chico">Si el SHN publica un <a href="https://www.hidro.gov.ar/oceanografia/AACRIOPLA.asp">aviso de bajante</a>, vale el aviso.</p>
+  </details></section>`) + pie();
+</script>
+<script data-goatcounter="https://mareatigre.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>

@@ -163,7 +163,7 @@ function pie() {
 }
 
 function cabecera(activa) {
-  const L = [["index.html", "Hoy"], ["probabilidades.html", "Probabilidades"], ["resultados.html", "Historial"]];
+  const L = [["index.html", "Hoy"], ["probabilidades.html", "Probabilidades"], ["resultados.html", "Historial"], ["bajante.html", "Bajante"]];
   // Modelo del SHN sin actualizar: nota chica y gris (no es una falla nuestra ni un riesgo, pero cambia lo que se ve).
   // Con estado.js de vigia_servidor v4 (sin `usado`/`atrasado`), vigente=false quería decir "viejo y no usado".
   const mo = V.modelo, atras = mo && (mo.atrasado ?? mo.vigente === false), usado = mo && (mo.usado ?? mo.vigente);
