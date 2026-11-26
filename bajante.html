@@ -39,7 +39,9 @@ function fila(b) {
     <span class="mb">lo más bajo visto: <b>${nb(b.mas_bajo)}&nbsp;m</b></span>${b.n < 15 ? " (pocos casos)" : ""}</div>`;
   // (v4, pedido de Fernando: corto) Etiqueta con la hora ORIGINAL del modelo del SHN ("ref. SHN 15:00"), para compararla
   // con la página del SHN; la hora grande ya está corregida. Con el día si la corrección cruza la medianoche.
-  const ref = !b.t_mod ? "modelo" : `ref. SHN ${hhmm(b.t_mod)}${b.t_mod.slice(0, 10) !== b.t.slice(0, 10) ? " " + ddmm(b.t_mod) : ""}`;
+  // (v5) Si la hora sale de la pleamar que ya publicó el SHN, la etiqueta muestra esa pleamar.
+  const ref = b.ancla ? `ref. pleamar SHN ${hhmm(b.ancla)}${b.ancla.slice(0, 10) !== b.t.slice(0, 10) ? " " + ddmm(b.ancla) : ""}`
+    : !b.t_mod ? "modelo" : `ref. SHN ${hhmm(b.t_mod)}${b.t_mod.slice(0, 10) !== b.t.slice(0, 10) ? " " + ddmm(b.t_mod) : ""}`;
   const fuente = `<span class="chip" style="white-space:nowrap">${b.fuente === "SHN" ? "SHN" : ref}</span>`;
   return `<div class="bj${b.bajo_ref ? " bajo" : ""}">
     <span class="h">${hhmm(b.t)}</span><span class="a">${m2b(b.altura)} m</span>
@@ -93,7 +95,10 @@ const notaHora = () => {
   return h.aplicada ? `<p class="chico">⏱️ <b>Hora corregida:</b> el modelo del SHN marca la bajante antes de lo que después se mide.
     Según ${h.n} bajantes, el agua real llega unas ${h.mediana.toFixed(1).replace(".", ",")} h más tarde (${h.mas_tarde} de ${h.n} veces llegó después),
     así que a las del modelo se les suman ${h.aplicada.toFixed(1).replace(".", ",")} h. “ref. SHN” es la hora que marcaba el modelo, antes de corregir.
-    Las del pronóstico del SHN (etiqueta “SHN”) van tal cual. En Tigre, aprox. una hora después.</p>`
+    Las del pronóstico del SHN (etiqueta “SHN”) van tal cual.
+    ${B.experiencia.subida && B.experiencia.subida.aplicada ? `Si el SHN ya publicó la pleamar que sigue (“ref. pleamar SHN”), la hora sale de esa pleamar menos lo que
+    tarda en subir el agua: ${B.experiencia.subida.aplicada.toFixed(1).replace(".", ",")} h, medido en ${B.experiencia.subida.n} mareas (sube más rápido de lo que baja).` : ""}
+    En Tigre, aprox. una hora después.</p>`
     : `<p class="chico">⏱️ Todavía no hay casos suficientes para corregir la hora del modelo: va tal cual la publica el SHN.</p>`;
 };
 
