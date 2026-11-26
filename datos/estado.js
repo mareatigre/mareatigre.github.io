@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-26T18:40",
+ "actualizado": "2026-11-26T19:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,14 +12,14 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-26T17:45",
-  "altura": 1.93,
+  "hora": "2026-11-26T18:45",
+  "altura": 2.11,
   "fresco": true
  },
  "medido_hoy": {
   "hora": "2026-11-26T08:45",
   "altura": 2.49,
-  "lecturas": 18
+  "lecturas": 19
  },
  "senal_ina": "fuerte",
  "fuentes": {
@@ -30,15 +30,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-26T18:40",
-  "Avisos SHN": "2026-11-26T18:40",
-  "Alturas SHN": "2026-11-26T18:40",
-  "Modelo SHN": "2026-11-26T18:40",
-  "Ríos INA": "2026-11-26T18:40"
+  "Pronóstico SHN": "2026-11-26T19:00",
+  "Avisos SHN": "2026-11-26T19:00",
+  "Alturas SHN": "2026-11-26T19:00",
+  "Modelo SHN": "2026-11-26T19:00",
+  "Ríos INA": "2026-11-26T19:00"
  },
  "modelo": {
   "inicializado": "2026-11-26T09:00",
-  "horas": 9.7,
+  "horas": 10.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -60,7 +60,7 @@ window.VIGIA = {
    "pico": 2.3,
    "eff": 2.3,
    "fuente": "SHN",
-   "plazo_h": 2.3,
+   "plazo_h": 2.0,
    "margen": 0.17,
    "etiqueta": null,
    "evento": "-",
@@ -68,8 +68,8 @@ window.VIGIA = {
    "parcial": false,
    "cola": false,
    "prob": {
-    "2.40": 28,
-    "2.50": 12,
+    "2.40": 27,
+    "2.50": 11,
     "2.90": 0
    },
    "rango": [
@@ -83,7 +83,7 @@ window.VIGIA = {
    "pico": 1.31,
    "eff": 1.31,
    "fuente": "modelo",
-   "plazo_h": 5.3,
+   "plazo_h": 5.0,
    "margen": 0.26,
    "etiqueta": null,
    "evento": "-",
@@ -106,7 +106,7 @@ window.VIGIA = {
    "pico": 1.06,
    "eff": 1.06,
    "fuente": "modelo",
-   "plazo_h": 49.3,
+   "plazo_h": 49.0,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -129,7 +129,7 @@ window.VIGIA = {
    "pico": 1.23,
    "eff": 1.23,
    "fuente": "modelo",
-   "plazo_h": 73.3,
+   "plazo_h": 73.0,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
@@ -152,7 +152,7 @@ window.VIGIA = {
    "pico": 1.21,
    "eff": 1.21,
    "fuente": "modelo",
-   "plazo_h": 85.3,
+   "plazo_h": 85.0,
    "margen": 0.46,
    "etiqueta": null,
    "evento": "-",
@@ -511,8 +511,8 @@ window.VIGIA = {
  "bajante": {
   "ref": 0.4,
   "ahora": {
-   "hora": "2026-11-26T17:45",
-   "altura": 1.93,
+   "hora": "2026-11-26T18:45",
+   "altura": 2.11,
    "va": "subiendo"
   },
   "medidas_hoy": [
@@ -551,8 +551,8 @@ window.VIGIA = {
     "corr_h": 3.0,
     "plazo": 1,
     "ancla": null,
-    "chance": 47,
-    "n": 49,
+    "chance": 48,
+    "n": 50,
     "rango": [
      0.22,
      0.57
@@ -570,7 +570,7 @@ window.VIGIA = {
     "plazo": 2,
     "ancla": null,
     "chance": 8,
-    "n": 37,
+    "n": 38,
     "rango": [
      0.42,
      0.68
@@ -588,7 +588,7 @@ window.VIGIA = {
     "plazo": 2,
     "ancla": null,
     "chance": 11,
-    "n": 37,
+    "n": 38,
     "rango": [
      0.39,
      0.65
@@ -606,10 +606,10 @@ window.VIGIA = {
     "plazo": 3,
     "ancla": null,
     "chance": 0,
-    "n": 26,
+    "n": 27,
     "rango": [
-     0.56,
-     0.93
+     0.57,
+     0.92
     ],
     "mas_bajo": 0.48,
     "en_curso": false,
@@ -623,11 +623,11 @@ window.VIGIA = {
     "corr_h": 3.0,
     "plazo": 3,
     "ancla": null,
-    "chance": 12,
-    "n": 26,
+    "chance": 11,
+    "n": 27,
     "rango": [
-     0.4,
-     0.77
+     0.41,
+     0.76
     ],
     "mas_bajo": 0.32,
     "en_curso": false,
@@ -637,21 +637,21 @@ window.VIGIA = {
   "experiencia": {
    "modelo": {
     "1": {
-     "n": 49,
+     "n": 50,
      "promedio": 0.11,
      "bajo_mas": 9,
      "peor": -0.19,
      "peor_fecha": "2026-11-24T02:45"
     },
     "2": {
-     "n": 37,
+     "n": 38,
      "promedio": 0.16,
      "bajo_mas": 3,
      "peor": -0.15,
      "peor_fecha": "2026-11-20T22:45"
     },
     "3": {
-     "n": 26,
+     "n": 27,
      "promedio": 0.19,
      "bajo_mas": 3,
      "peor": -0.09,
@@ -674,16 +674,16 @@ window.VIGIA = {
    },
    "hora": {
     "mediana": 2.8,
-    "n": 112,
+    "n": 115,
     "aplicada": 3.0,
-    "mas_tarde": 99
+    "mas_tarde": 102
    },
    "subida": {
     "mediana": 5.0,
     "n": 67,
     "aplicada": 5.0
    },
-   "medidas": 69,
+   "medidas": 70,
    "bajo_ref": 8,
    "mas_baja": {
     "hora": "2026-11-04T23:45",
@@ -695,7 +695,7 @@ window.VIGIA = {
     3.75,
     4.99
    ],
-   "casos_reales": 52
+   "casos_reales": 53
   },
   "semana_antes": {
    "hora": 3.0,
