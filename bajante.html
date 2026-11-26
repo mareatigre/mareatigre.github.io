@@ -28,11 +28,12 @@ const cm = x => Math.round(Math.abs(x) * 100) + " cm";
 const horaT = s => horaTigre(hhmm(s));
 
 function fila(b) {
-  const peor = b.peor == null ? "" : `<br>en el peor caso visto: <b>${m2b(b.peor)}</b>`;
+  // (v2) Chance de bajar de la referencia, contada en la experiencia (bajantes.py). 0 % no se muestra.
+  const ch = !b.chance ? "" : `<br><span style="white-space:nowrap">bajar de ${m2b(B.ref)} m: <b>${b.chance >= 100 ? "casi seguro" : b.chance + "&nbsp;%"}</b></span>${b.n < 15 ? " (pocos casos)" : ""}`;
   const fuente = b.fuente === "SHN" ? `<span class="chip">SHN</span>` : `<span class="chip">modelo ⏱</span>`;
   return `<div class="bj${b.bajo_ref ? " bajo" : ""}">
     <span class="h">${hhmm(b.t)}</span><span class="a">${m2b(b.altura)} m</span>
-    <span class="d">${b.bajo_ref ? "🔻 " : ""}Tigre ~${horaT(b.t)} ${fuente}${peor}</span></div>`;
+    <span class="d">${b.bajo_ref ? "🔻 " : ""}Tigre ~${horaT(b.t)} ${fuente}${ch}</span></div>`;
 }
 function filaMedida(b) {
   return `<div class="bj medida"><span class="h">${hhmm(b.t)}</span><span class="a">${m2b(b.altura)} m</span>
@@ -73,8 +74,7 @@ function experiencia() {
     ${m1.n ? `<p class="chico">Lo normal es que el agua quede <b>más alta</b> que lo previsto (${cm(m1.promedio)} en promedio, 1 día antes).
       Pero ${m1.bajo_mas} de ${m1.n} veces bajó más${m1.peor < 0 ? `; la peor, <b>${cm(m1.peor)}</b> más (${ddmm(m1.peor_fecha)})` : ""}.</p>` : ""}
     <table class="exp"><tr><th>Pronóstico</th><th>Casos</th><th>Bajó más</th><th>La peor</th></tr>${filas}</table>
-    <p class="chico mut">“En el peor caso visto” = lo previsto menos la peor de esa columna (con ${B.min_casos} casos o más).
-      Hace ${sa.dias} días era: corrección de hora ${sa.hora.toFixed(1).replace(".", ",")} h${sa.n_1d ? `, peor a 1 día ${cm(sa.peor_1d)}` : ""}.</p>
+    <p class="chico mut">Hace ${sa.dias} días era: corrección de hora ${sa.hora.toFixed(1).replace(".", ",")} h${sa.n_1d ? `, peor a 1 día ${cm(sa.peor_1d)}` : ""}.</p>
     ${movio}</section>`;
 }
 
@@ -89,14 +89,17 @@ const notaHora = () => {
 document.getElementById("app").innerHTML = cabecera("bajante.html") + avisosArriba() + (!B ? `
   <h1>Bajante</h1><section class="card"><p>Todavía no hay datos de bajantes en esta actualización.</p></section>` : `
   <h1>Bajante</h1>
-  <p class="chico">Para los que navegamos el Delta: las bajantes de cada día en San Fernando, con la hora y la altura.
+  <p class="chico">Para los navegantes del Delta: las bajantes de cada día en San Fernando, con la hora y la altura.
     Es informativo: no es un aviso.</p>
   ${ahoraTxt()}
   ${porDia()}
   <section class="card">
     ${notaHora()}
-    <p class="chico">🔻 <b>Amarillo:</b> la bajante, o su peor caso visto, queda por debajo de <b>${m2(B.ref)}</b>
+    <p class="chico">🔻 <b>Amarillo:</b> hay chance de que el agua baje de <b>${m2(B.ref)}</b>
       (referencia del Vigía para navegar, no es un umbral oficial).</p>
+    <p class="chico"><b>De dónde sale la chance:</b> de las bajantes ya medidas con pronóstico a ese mismo plazo (la tabla de abajo),
+      en cuántas el error habría dejado el agua por debajo de ${m2(B.ref)}. Como el agua suele quedar más alta que lo previsto,
+      una bajante prevista de 0,30 m no siempre baja de 0,40. “Pocos casos”: menos de 15 para contar.</p>
   </section>
   ${experiencia()}
   <section class="card"><details><summary>Para leerlo bien</summary>
@@ -104,7 +107,8 @@ document.getElementById("app").innerHTML = cabecera("bajante.html") + avisosArri
       con lo medido, y la corrección se recalcula sola cada hora con todo lo guardado.</p>
     <p class="chico"><b>Qué puede fallar:</b> la experiencia es de pocas semanas${B.experiencia.rio_rosario ? `, con el Paraná alto
       (Rosario entre ${m2(B.experiencia.rio_rosario[0])} y ${m2(B.experiencia.rio_rosario[1])})` : ""} y sin ninguna bajante extraordinaria.
-      Con el río bajo y viento del norte el agua puede bajar bastante más: el peor caso visto <b>no</b> es el peor posible.
+      Con el río bajo y viento del norte el agua puede bajar bastante más que lo visto hasta ahora: una chance de 0 % quiere decir
+      que no pasó nunca en lo medido, no que sea imposible.
       La hora real se conoce de a una hora (las lecturas son una por hora). Algunos días el modelo acierta la hora y la corrección lo corre de más.</p>
     <p class="chico">Si el SHN publica un <a href="https://www.hidro.gov.ar/oceanografia/AACRIOPLA.asp">aviso de bajante</a>, vale el aviso.</p>
   </details></section>`) + pie();
