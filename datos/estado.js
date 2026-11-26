@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-26T18:00",
+ "actualizado": "2026-11-26T18:40",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -30,15 +30,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-26T18:00",
-  "Avisos SHN": "2026-11-26T18:00",
-  "Alturas SHN": "2026-11-26T18:00",
-  "Modelo SHN": "2026-11-26T18:00",
-  "Ríos INA": "2026-11-26T18:00"
+  "Pronóstico SHN": "2026-11-26T18:40",
+  "Avisos SHN": "2026-11-26T18:40",
+  "Alturas SHN": "2026-11-26T18:40",
+  "Modelo SHN": "2026-11-26T18:40",
+  "Ríos INA": "2026-11-26T18:40"
  },
  "modelo": {
   "inicializado": "2026-11-26T09:00",
-  "horas": 9.0,
+  "horas": 9.7,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -60,7 +60,7 @@ window.VIGIA = {
    "pico": 2.3,
    "eff": 2.3,
    "fuente": "SHN",
-   "plazo_h": 3.0,
+   "plazo_h": 2.3,
    "margen": 0.17,
    "etiqueta": null,
    "evento": "-",
@@ -73,8 +73,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    2.08,
-    2.52
+    2.09,
+    2.51
    ]
   },
   {
@@ -83,7 +83,7 @@ window.VIGIA = {
    "pico": 1.31,
    "eff": 1.31,
    "fuente": "modelo",
-   "plazo_h": 6.0,
+   "plazo_h": 5.3,
    "margen": 0.26,
    "etiqueta": null,
    "evento": "-",
@@ -106,7 +106,7 @@ window.VIGIA = {
    "pico": 1.06,
    "eff": 1.06,
    "fuente": "modelo",
-   "plazo_h": 50.0,
+   "plazo_h": 49.3,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -129,7 +129,7 @@ window.VIGIA = {
    "pico": 1.23,
    "eff": 1.23,
    "fuente": "modelo",
-   "plazo_h": 74.0,
+   "plazo_h": 73.3,
    "margen": 0.42,
    "etiqueta": null,
    "evento": "-",
@@ -152,7 +152,7 @@ window.VIGIA = {
    "pico": 1.21,
    "eff": 1.21,
    "fuente": "modelo",
-   "plazo_h": 86.0,
+   "plazo_h": 85.3,
    "margen": 0.46,
    "etiqueta": null,
    "evento": "-",
@@ -519,26 +519,13 @@ window.VIGIA = {
    {
     "t": "2026-11-26T02:45",
     "altura": 1.05
+   },
+   {
+    "t": "2026-11-26T15:45",
+    "altura": 1.48
    }
   ],
   "proximas": [
-   {
-    "t": "2026-11-26T15:30",
-    "altura": 1.5,
-    "fuente": "SHN",
-    "corr_h": 0.0,
-    "plazo": 0,
-    "ancla": null,
-    "chance": 0,
-    "n": 70,
-    "rango": [
-     1.34,
-     1.73
-    ],
-    "mas_bajo": 1.09,
-    "en_curso": true,
-    "bajo_ref": false
-   },
    {
     "t": "2026-11-27T06:00",
     "altura": 0.9,
