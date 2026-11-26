@@ -8,7 +8,9 @@
 <script src="comun.js"></script>
 <style>
 /* (26/11) Pestaña Bajante: informativa, sin rojos. Solo se marca suave (amarillo) lo que podría quedar bajo la referencia. */
-.bj{display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.bj{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.bj .r{flex-basis:100%;font-size:13px;color:var(--mut)}
+.bj .r .rg b{color:var(--agua)} .bj .r .mb b{color:var(--pos)}
 .bj:last-child{border-bottom:0}
 .bj .h{font-size:22px;font-weight:800;min-width:72px}
 .bj .a{font-size:20px;font-weight:700;color:var(--agua);white-space:nowrap}
@@ -28,12 +30,17 @@ const cm = x => Math.round(Math.abs(x) * 100) + " cm";
 const horaT = s => horaTigre(hhmm(s));
 
 function fila(b) {
-  // (v2) Chance de bajar de la referencia, contada en la experiencia (bajantes.py). 0 % no se muestra.
-  const ch = !b.chance ? "" : `<br><span style="white-space:nowrap">bajar de ${m2b(B.ref)} m: <b>${b.chance >= 100 ? "casi seguro" : b.chance + "&nbsp;%"}</b></span>${b.n < 15 ? " (pocos casos)" : ""}`;
-  const fuente = b.fuente === "SHN" ? `<span class="chip">SHN</span>` : `<span class="chip">modelo ⏱</span>`;
+  // (v3, pedido de Fernando) Rango de lo medido (8 de cada 10 casos) y lo más bajo visto, a ese plazo (bajantes.py).
+  const nb = x => m2b(x).replace(" ", "&nbsp;");
+  const r = !b.rango ? "" : `<div class="r"><span class="rg">8 de cada 10 veces: entre <b>${nb(b.rango[0])}&nbsp;y&nbsp;${nb(b.rango[1])}&nbsp;m</b></span><br>
+    <span class="mb">lo más bajo visto: <b>${nb(b.mas_bajo)}&nbsp;m</b></span>${b.n < 15 ? " (pocos casos)" : ""}</div>`;
+  // (v4, pedido de Fernando: corto) Etiqueta con la hora ORIGINAL del modelo del SHN ("ref. SHN 15:00"), para compararla
+  // con la página del SHN; la hora grande ya está corregida. Con el día si la corrección cruza la medianoche.
+  const ref = !b.t_mod ? "modelo" : `ref. SHN ${hhmm(b.t_mod)}${b.t_mod.slice(0, 10) !== b.t.slice(0, 10) ? " " + ddmm(b.t_mod) : ""}`;
+  const fuente = `<span class="chip" style="white-space:nowrap">${b.fuente === "SHN" ? "SHN" : ref}</span>`;
   return `<div class="bj${b.bajo_ref ? " bajo" : ""}">
     <span class="h">${hhmm(b.t)}</span><span class="a">${m2b(b.altura)} m</span>
-    <span class="d">${b.bajo_ref ? "🔻 " : ""}Tigre ~${horaT(b.t)} ${fuente}${ch}</span></div>`;
+    <span class="d">${b.bajo_ref ? "🔻 " : ""}Tigre ~${horaT(b.t)}<br>${fuente}</span>${r}</div>`;
 }
 function filaMedida(b) {
   return `<div class="bj medida"><span class="h">${hhmm(b.t)}</span><span class="a">${m2b(b.altura)} m</span>
@@ -80,9 +87,10 @@ function experiencia() {
 
 const notaHora = () => {
   const h = B.experiencia.hora;
-  return h.aplicada ? `<p class="chico">⏱️ <b>Hora corregida (modelo ⏱):</b> el modelo del SHN marca la bajante antes de lo que después se mide.
+  return h.aplicada ? `<p class="chico">⏱️ <b>Hora corregida:</b> el modelo del SHN marca la bajante antes de lo que después se mide.
     Según ${h.n} bajantes, el agua real llega unas ${h.mediana.toFixed(1).replace(".", ",")} h más tarde (${h.mas_tarde} de ${h.n} veces llegó después),
-    así que a las del modelo se les suman ${h.aplicada.toFixed(1).replace(".", ",")} h. Las del SHN van tal cual. En Tigre, aprox. una hora después.</p>`
+    así que a las del modelo se les suman ${h.aplicada.toFixed(1).replace(".", ",")} h. “ref. SHN” es la hora que marcaba el modelo, antes de corregir.
+    Las del pronóstico del SHN (etiqueta “SHN”) van tal cual. En Tigre, aprox. una hora después.</p>`
     : `<p class="chico">⏱️ Todavía no hay casos suficientes para corregir la hora del modelo: va tal cual la publica el SHN.</p>`;
 };
 
@@ -95,11 +103,12 @@ document.getElementById("app").innerHTML = cabecera("bajante.html") + avisosArri
   ${porDia()}
   <section class="card">
     ${notaHora()}
-    <p class="chico">🔻 <b>Amarillo:</b> hay chance de que el agua baje de <b>${m2(B.ref)}</b>
+    <p class="chico"><b>8 de cada 10 veces:</b> entre qué alturas quedó el agua en las bajantes ya medidas con pronóstico a ese
+      mismo plazo (la tabla de abajo), aplicado a lo previsto hoy. <b>Lo más bajo visto:</b> lo previsto menos lo que más se pasó
+      para abajo a ese plazo. Como el agua suele quedar más alta que lo previsto, el rango puede empezar arriba de lo previsto.
+      “Pocos casos”: menos de 15 para contar.</p>
+    <p class="chico">🔻 <b>Amarillo:</b> lo previsto o lo más bajo visto queda por debajo de <b>${m2(B.ref)}</b>
       (referencia del Vigía para navegar, no es un umbral oficial).</p>
-    <p class="chico"><b>De dónde sale la chance:</b> de las bajantes ya medidas con pronóstico a ese mismo plazo (la tabla de abajo),
-      en cuántas el error habría dejado el agua por debajo de ${m2(B.ref)}. Como el agua suele quedar más alta que lo previsto,
-      una bajante prevista de 0,30 m no siempre baja de 0,40. “Pocos casos”: menos de 15 para contar.</p>
   </section>
   ${experiencia()}
   <section class="card"><details><summary>Para leerlo bien</summary>
@@ -107,8 +116,8 @@ document.getElementById("app").innerHTML = cabecera("bajante.html") + avisosArri
       con lo medido, y la corrección se recalcula sola cada hora con todo lo guardado.</p>
     <p class="chico"><b>Qué puede fallar:</b> la experiencia es de pocas semanas${B.experiencia.rio_rosario ? `, con el Paraná alto
       (Rosario entre ${m2(B.experiencia.rio_rosario[0])} y ${m2(B.experiencia.rio_rosario[1])})` : ""} y sin ninguna bajante extraordinaria.
-      Con el río bajo y viento del norte el agua puede bajar bastante más que lo visto hasta ahora: una chance de 0 % quiere decir
-      que no pasó nunca en lo medido, no que sea imposible.
+      Con el río bajo y viento del norte el agua puede bajar bastante más que lo visto hasta ahora: “lo más bajo visto” es lo más bajo
+      de lo medido hasta ahora, no lo más bajo posible.
       La hora real se conoce de a una hora (las lecturas son una por hora). Algunos días el modelo acierta la hora y la corrección lo corre de más.</p>
     <p class="chico">Si el SHN publica un <a href="https://www.hidro.gov.ar/oceanografia/AACRIOPLA.asp">aviso de bajante</a>, vale el aviso.</p>
   </details></section>`) + pie();
