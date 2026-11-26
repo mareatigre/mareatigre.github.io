@@ -8,14 +8,17 @@
 <script src="comun.js"></script>
 <style>
 /* (26/11) Pestaña Bajante: informativa, sin rojos. Solo se marca suave (amarillo) lo que podría quedar bajo la referencia. */
-.bj{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+/* (26/11, pedido de Fernando) Cada bajante en su propia cajita, para que se separen bien (suelen ser 2 por día). */
+.bj{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:10px 12px;border-radius:12px;margin-bottom:8px;
+  background:var(--bg);border:1px solid var(--line);   /* respaldo si el navegador no entiende color-mix */
+  background:color-mix(in srgb, var(--agua) 8%, var(--card));border:1px solid color-mix(in srgb, var(--agua) 22%, var(--card))}
 .bj .r{flex-basis:100%;font-size:13px;color:var(--mut)}
 .bj .r .rg b{color:var(--agua)} .bj .r .mb b{color:var(--pos)}
-.bj:last-child{border-bottom:0}
+.bj:last-child{margin-bottom:0}
 .bj .h{font-size:22px;font-weight:800;min-width:72px}
 .bj .a{font-size:20px;font-weight:700;color:var(--agua);white-space:nowrap}
 .bj .d{font-size:12.5px;color:var(--ink2);margin-left:auto;text-align:right;line-height:1.35}
-.bj.bajo{background:var(--pos-bg);margin:0 -16px;padding:10px 16px;border-left:4px solid var(--pos)}
+.bj.bajo{background:var(--pos-bg);border:1px solid color-mix(in srgb, var(--pos) 35%, var(--card));border-left:4px solid var(--pos);padding-left:8px}
 .bj.medida .h,.bj.medida .a{font-style:italic}
 .chip{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:0 6px;color:var(--mut)}
 .exp td,.exp th{font-size:13.5px}
