@@ -20,6 +20,7 @@
 .bj .d{font-size:12.5px;color:var(--ink2);margin-left:auto;text-align:right;line-height:1.35}
 .bj.bajo{background:var(--pos-bg);border:1px solid color-mix(in srgb, var(--pos) 35%, var(--card));border-left:4px solid var(--pos);padding-left:8px}
 .bj.medida .h,.bj.medida .a{font-style:italic}
+.bj .d b{color:var(--ink)}   /* (v6) "en curso" */
 .chip{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:0 6px;color:var(--mut)}
 .exp td,.exp th{font-size:13.5px}
 .movio{background:var(--pos-bg);border:1px solid var(--pos);border-radius:10px;padding:8px 10px;font-size:13.5px;margin-top:10px}
@@ -45,7 +46,7 @@ function fila(b) {
   const fuente = `<span class="chip" style="white-space:nowrap">${b.fuente === "SHN" ? "SHN" : ref}</span>`;
   return `<div class="bj${b.bajo_ref ? " bajo" : ""}">
     <span class="h">${hhmm(b.t)}</span><span class="a">${m2b(b.altura)} m</span>
-    <span class="d">${b.bajo_ref ? "🔻 " : ""}Tigre ~${horaT(b.t)}<br>${fuente}</span>${r}</div>`;
+    <span class="d">${b.en_curso ? `<b>en curso</b>${B.ahora ? ` · ahora ${m2b(B.ahora.altura)}&nbsp;m` : ""}<br>` : ""}${b.bajo_ref ? "🔻 " : ""}Tigre ~${horaT(b.t)}<br>${fuente}</span>${r}</div>`;
 }
 function filaMedida(b) {
   return `<div class="bj medida"><span class="h">${hhmm(b.t)}</span><span class="a">${m2b(b.altura)} m</span>
