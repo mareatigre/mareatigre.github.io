@@ -30,12 +30,14 @@ function regla() {
   s += `<rect x="${x0}" y="${y(max.eff)}" width="${ancho}" height="${bot - y(max.eff)}" rx="10" fill="${css('--agua')}" opacity=".85"/>`;
   for (let v = 0; v <= hMax + 1e-9; v += 0.5)
     s += `<text x="${x0 - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="${css('--mut')}">${v.toFixed(1).replace(".", ",")}</text>`;
-  const marcas = [[V.umbrales.compuesto, "2,40 · atención", "--pos"], [V.umbrales.aviso, "2,50 · aviso", "--avi"], [V.umbrales.alerta, "2,90 · alerta", "--ale"]];
-  marcas.forEach(([v, t, c], i) => {
-    const yy = y(v), ty = yy + (i === 0 ? 12 : i === 1 ? -4 : 4);
-    s += `<line x1="${x0 - 4}" x2="${x0 + ancho + 6}" y1="${yy}" y2="${yy}" stroke="${css(c)}" stroke-width="2" stroke-dasharray="${i ? '' : '4 3'}"/>`;
+  // (26/11, Fernando) La línea de 2,40 queda siempre: es una referencia para el isleño. Sin texto debajo: lo del INA
+  // (por qué 2,40 a veces cuenta como aviso) va como nota chica abajo del gráfico, y solo cuando hay señal.
+  const marcas = [[V.umbrales.compuesto, "2,40 · atención", "--pos", 12],
+                  [V.umbrales.aviso, "2,50 · aviso", "--avi", -4], [V.umbrales.alerta, "2,90 · alerta", "--ale", 4]];
+  marcas.forEach(([v, t, c, dy]) => {
+    const yy = y(v), ty = yy + dy, punteada = v === V.umbrales.compuesto;
+    s += `<line x1="${x0 - 4}" x2="${x0 + ancho + 6}" y1="${yy}" y2="${yy}" stroke="${css(c)}" stroke-width="2" stroke-dasharray="${punteada ? '4 3' : ''}"/>`;
     s += `<text x="${x0 + ancho + 10}" y="${ty}" font-size="11.5" fill="${css(c)}" font-weight="600">${t}</text>`;
-    if (i === 0) s += `<text x="${x0 + ancho + 10}" y="${ty + 13}" font-size="10.5" fill="${css('--mut')}">(si el río viene alto)</text>`;
   });
   // El número va DENTRO de la barra (en blanco), así no lo pisan las líneas de 2,40 / 2,50 / 2,90.
   // Si la barra es muy baja para que entre, va arriba de la franja clara.
@@ -57,10 +59,13 @@ const ORD_N = ["normal", "posible", "aviso", "alerta"];
 const nivelAltura = h => h >= V.umbrales.alerta ? "alerta" : h >= V.umbrales.aviso ? "aviso" : "normal";
 function tarjetaDia(d) {
   const md = V.medido_hoy, hoy = nomDia(d.fecha) === "Hoy";
-  let alt = m2s(d.eff), hs = `${d.hora} h${d.parcial ? " *" : ""}`, nv = nivelDia(d), rg = V.escalera, cls = "";
+  let alt = m2s(d.eff), hs = `${d.hora} h${d.parcial ? " *" : ""}`, nv = nivelDia(d), rg = V.escalera, cls = "", luego = "";
   if (hoy && md && (d.cola || md.altura >= d.eff)) {
+    // (26/11, pedido de Fernando) Arriba, grande, el pico que YA PASÓ (medido); abajo, chico, lo que queda del día
+    // (si lo que queda es solo la bajante, no se muestra). El color, el peor de los dos.
     const nd = d.cola ? "normal" : nivelDia(d), na = nivelAltura(md.altura);
-    alt = m2s(md.altura); hs = `medido ${hhmm(md.hora)}`; rg = false; cls = " medido";
+    alt = m2s(md.altura); hs = `pico ${hhmm(md.hora)}`; rg = false; cls = " medido";
+    if (!d.cola) luego = `<div class="luego">luego ${m2s(d.eff)}<br>${d.hora} h</div>`;
     nv = ORD_N.indexOf(na) > ORD_N.indexOf(nd) ? na : nd;
   } else if (d.cola) {
     alt = "—"; hs = "bajando"; rg = false; nv = "normal";
@@ -70,13 +75,13 @@ function tarjetaDia(d) {
       <div class="pto" style="background:var(${NIVELES[nv].color})"></div>
       <div class="alt">${alt}</div>
       ${rg ? `<div class="rg">${m2s(d.rango[0])}–${m2s(d.rango[1])}</div>` : ""}
-      <div class="hs">${hs}</div></div>`;
+      <div class="hs">${hs}</div>${luego}</div>`;
 }
 
 function tiraDias() {
   const medido = V.dias.some(d => nomDia(d.fecha) === "Hoy" && V.medido_hoy && (d.cola || V.medido_hoy.altura >= d.eff));
   return `<div class="dias">${V.dias.map(tarjetaDia).join("")}</div>
-    ${medido ? '<p class="chico mut">Hoy: lo más alto que ya se midió en San Fernando (es más que lo que queda previsto).</p>' : ""}
+    ${medido ? '<p class="chico mut">Hoy: arriba, el pico que ya pasó (medido en San Fernando); abajo, lo que queda previsto para el resto del día.</p>' : ""}
     ${V.escalera ? '<p class="chico mut">Debajo de cada altura: el rango probable.</p>' : ""}
     ${V.dias.some(d => d.parcial) ? '<p class="chico mut">* Día incompleto: el pronóstico no llega a cubrirlo entero.</p>' : ""}`;
 }
@@ -156,6 +161,7 @@ document.getElementById("app").innerHTML = cabecera("index.html") + avisosArriba
         alturas previstas de ${nomFranja(f)} (${f.picos === 0 ? "ningún pico medido" : f.picos + " pico" + (f.picos > 1 ? "s" : "") + " medido" + (f.picos > 1 ? "s" : "")}):
         tomá estos números con más cautela. <a href="${enl('resultados.html')}">Ver experiencia</a></p>` : ""; })()}
       ${V.sube_al_final ? '<p class="chico"><b>Ojo:</b> la curva del modelo sigue subiendo al final de los 4 días; el pico puede ser mayor.</p>' : ""}
+      ${V.senal_ina ? '<p class="chico mut">Los ríos vienen crecidos (dato del INA): por eso desde 2,40 m ya se considera aviso.</p>' : ""}
   </section>
   <section class="card"><h2>Día por día</h2>${tiraDias()}${leyenda()}</section>`}
   <section class="botones">
