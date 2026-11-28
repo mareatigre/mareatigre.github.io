@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-27T22:00",
+ "actualizado": "2026-11-27T23:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,14 +12,14 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-27T21:45",
-  "altura": 1.55,
+  "hora": "2026-11-27T22:45",
+  "altura": 1.6,
   "fresco": true
  },
  "medido_hoy": {
-  "hora": "2026-11-27T21:45",
-  "altura": 1.55,
-  "lecturas": 22
+  "hora": "2026-11-27T22:45",
+  "altura": 1.6,
+  "lecturas": 23
  },
  "senal_ina": "fuerte",
  "fuentes": {
@@ -30,15 +30,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-27T22:00",
-  "Avisos SHN": "2026-11-27T22:00",
-  "Alturas SHN": "2026-11-27T22:00",
-  "Modelo SHN": "2026-11-27T22:00",
-  "Ríos INA": "2026-11-27T22:00"
+  "Pronóstico SHN": "2026-11-27T23:00",
+  "Avisos SHN": "2026-11-27T23:00",
+  "Alturas SHN": "2026-11-27T23:00",
+  "Modelo SHN": "2026-11-27T23:00",
+  "Ríos INA": "2026-11-27T23:00"
  },
  "modelo": {
   "inicializado": "2026-11-27T15:00",
-  "horas": 7.0,
+  "horas": 8.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -56,35 +56,35 @@ window.VIGIA = {
  "dias": [
   {
    "fecha": "2026-11-27",
-   "hora": "22:30",
-   "pico": 1.35,
-   "eff": 1.35,
-   "fuente": "SHN",
-   "plazo_h": 0.5,
-   "margen": 0.15,
+   "hora": "22:00",
+   "pico": 0.85,
+   "eff": 0.85,
+   "fuente": "modelo",
+   "plazo_h": 0.0,
+   "margen": 0.2,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
-   "cola": false,
+   "cola": true,
    "prob": {
     "2.40": 0,
     "2.50": 0,
     "2.90": 0
    },
    "rango": [
-    1.15,
-    1.55
+    0.59,
+    1.11
    ]
   },
   {
    "fecha": "2026-11-28",
-   "hora": "22:00",
-   "pico": 1.15,
-   "eff": 1.15,
-   "fuente": "modelo",
-   "plazo_h": 24.0,
-   "margen": 0.34,
+   "hora": "10:30",
+   "pico": 1.5,
+   "eff": 1.5,
+   "fuente": "SHN",
+   "plazo_h": 11.5,
+   "margen": 0.23,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -96,8 +96,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    0.72,
-    1.58
+    1.2,
+    1.8
    ]
   },
   {
@@ -106,7 +106,7 @@ window.VIGIA = {
    "pico": 1.36,
    "eff": 1.36,
    "fuente": "modelo",
-   "plazo_h": 47.0,
+   "plazo_h": 46.0,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -129,7 +129,7 @@ window.VIGIA = {
    "pico": 1.55,
    "eff": 1.55,
    "fuente": "modelo",
-   "plazo_h": 71.0,
+   "plazo_h": 70.0,
    "margen": 0.41,
    "etiqueta": null,
    "evento": "-",
@@ -152,7 +152,7 @@ window.VIGIA = {
    "pico": 1.27,
    "eff": 1.27,
    "fuente": "modelo",
-   "plazo_h": 83.0,
+   "plazo_h": 82.0,
    "margen": 0.45,
    "etiqueta": null,
    "evento": "-",
@@ -511,8 +511,8 @@ window.VIGIA = {
  "bajante": {
   "ref": 0.4,
   "ahora": {
-   "hora": "2026-11-27T21:45",
-   "altura": 1.55,
+   "hora": "2026-11-27T22:45",
+   "altura": 1.6,
    "va": "subiendo"
   },
   "medidas_hoy": [
@@ -527,37 +527,36 @@ window.VIGIA = {
   ],
   "proximas": [
    {
-    "t": "2026-11-28T06:00",
-    "altura": 0.35,
+    "t": "2026-11-28T06:30",
+    "altura": 0.55,
     "fuente": "SHN",
     "corr_h": 0.0,
     "plazo": 0,
     "ancla": null,
-    "chance": 56,
+    "chance": 11,
     "n": 73,
     "rango": [
-     0.2,
-     0.58
+     0.4,
+     0.78
     ],
-    "mas_bajo": -0.06,
+    "mas_bajo": 0.14,
     "en_curso": false,
     "bajo_ref": true
    },
    {
     "t": "2026-11-28T18:00",
-    "t_mod": "2026-11-28T15:00",
-    "altura": 0.36,
-    "fuente": "modelo",
-    "corr_h": 3.0,
-    "plazo": 1,
+    "altura": 0.45,
+    "fuente": "SHN",
+    "corr_h": 0.0,
+    "plazo": 0,
     "ancla": null,
-    "chance": 33,
-    "n": 52,
+    "chance": 26,
+    "n": 73,
     "rango": [
-     0.27,
-     0.64
+     0.3,
+     0.68
     ],
-    "mas_bajo": 0.17,
+    "mas_bajo": 0.04,
     "en_curso": false,
     "bajo_ref": true
    },
@@ -699,9 +698,9 @@ window.VIGIA = {
   },
   "semana_antes": {
    "hora": 3.0,
-   "prom_1d": 0.14,
+   "prom_1d": 0.13,
    "peor_1d": -0.14,
-   "n_1d": 38,
+   "n_1d": 39,
    "dias": 7
   },
   "se_movio": [],
