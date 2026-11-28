@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-27T21:00",
+ "actualizado": "2026-11-27T22:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,14 +12,14 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-27T20:45",
-  "altura": 1.44,
+  "hora": "2026-11-27T21:45",
+  "altura": 1.55,
   "fresco": true
  },
  "medido_hoy": {
-  "hora": "2026-11-27T00:45",
-  "altura": 1.47,
-  "lecturas": 21
+  "hora": "2026-11-27T21:45",
+  "altura": 1.55,
+  "lecturas": 22
  },
  "senal_ina": "fuerte",
  "fuentes": {
@@ -30,15 +30,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-27T21:00",
-  "Avisos SHN": "2026-11-27T21:00",
-  "Alturas SHN": "2026-11-27T21:00",
-  "Modelo SHN": "2026-11-27T21:00",
-  "Ríos INA": "2026-11-27T21:00"
+  "Pronóstico SHN": "2026-11-27T22:00",
+  "Avisos SHN": "2026-11-27T22:00",
+  "Alturas SHN": "2026-11-27T22:00",
+  "Modelo SHN": "2026-11-27T22:00",
+  "Ríos INA": "2026-11-27T22:00"
  },
  "modelo": {
   "inicializado": "2026-11-27T15:00",
-  "horas": 6.0,
+  "horas": 7.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -60,8 +60,8 @@ window.VIGIA = {
    "pico": 1.35,
    "eff": 1.35,
    "fuente": "SHN",
-   "plazo_h": 1.5,
-   "margen": 0.16,
+   "plazo_h": 0.5,
+   "margen": 0.15,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -73,8 +73,8 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.14,
-    1.56
+    1.15,
+    1.55
    ]
   },
   {
@@ -83,7 +83,7 @@ window.VIGIA = {
    "pico": 1.15,
    "eff": 1.15,
    "fuente": "modelo",
-   "plazo_h": 25.0,
+   "plazo_h": 24.0,
    "margen": 0.34,
    "etiqueta": null,
    "evento": "-",
@@ -106,7 +106,7 @@ window.VIGIA = {
    "pico": 1.36,
    "eff": 1.36,
    "fuente": "modelo",
-   "plazo_h": 48.0,
+   "plazo_h": 47.0,
    "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
@@ -129,7 +129,7 @@ window.VIGIA = {
    "pico": 1.55,
    "eff": 1.55,
    "fuente": "modelo",
-   "plazo_h": 72.0,
+   "plazo_h": 71.0,
    "margen": 0.41,
    "etiqueta": null,
    "evento": "-",
@@ -152,7 +152,7 @@ window.VIGIA = {
    "pico": 1.27,
    "eff": 1.27,
    "fuente": "modelo",
-   "plazo_h": 84.0,
+   "plazo_h": 83.0,
    "margen": 0.45,
    "etiqueta": null,
    "evento": "-",
@@ -511,8 +511,8 @@ window.VIGIA = {
  "bajante": {
   "ref": 0.4,
   "ahora": {
-   "hora": "2026-11-27T20:45",
-   "altura": 1.44,
+   "hora": "2026-11-27T21:45",
+   "altura": 1.55,
    "va": "subiendo"
   },
   "medidas_hoy": [
