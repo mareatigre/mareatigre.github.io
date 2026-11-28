@@ -2,7 +2,7 @@
 window.VIGIA = {
  "ejemplo": false,
  "version": 1,
- "actualizado": "2026-11-28T15:00",
+ "actualizado": "2026-11-28T16:00",
  "referencia": "San Fernando",
  "nivel": "normal",
  "ocurriendo": false,
@@ -12,14 +12,14 @@ window.VIGIA = {
   "alerta": 2.9
  },
  "ultima_real": {
-  "hora": "2026-11-28T14:45",
-  "altura": 0.87,
+  "hora": "2026-11-28T15:45",
+  "altura": 0.76,
   "fresco": true
  },
  "medido_hoy": {
   "hora": "2026-11-28T00:45",
   "altura": 1.33,
-  "lecturas": 15
+  "lecturas": 16
  },
  "senal_ina": "fuerte",
  "fuentes": {
@@ -30,15 +30,15 @@ window.VIGIA = {
   "Ríos INA": true
  },
  "ultima_lectura": {
-  "Pronóstico SHN": "2026-11-28T15:00",
-  "Avisos SHN": "2026-11-28T15:00",
-  "Alturas SHN": "2026-11-28T15:00",
-  "Modelo SHN": "2026-11-28T15:00",
-  "Ríos INA": "2026-11-28T15:00"
+  "Pronóstico SHN": "2026-11-28T16:00",
+  "Avisos SHN": "2026-11-28T16:00",
+  "Alturas SHN": "2026-11-28T16:00",
+  "Modelo SHN": "2026-11-28T16:00",
+  "Ríos INA": "2026-11-28T16:00"
  },
  "modelo": {
-  "inicializado": "2026-11-28T03:00",
-  "horas": 12.0,
+  "inicializado": "2026-11-28T09:00",
+  "horas": 7.0,
   "usado": true,
   "atrasado": false,
   "vigente": true
@@ -57,10 +57,10 @@ window.VIGIA = {
   {
    "fecha": "2026-11-28",
    "hora": "23:00",
-   "pico": 1.65,
-   "eff": 1.65,
+   "pico": 1.9,
+   "eff": 1.9,
    "fuente": "SHN",
-   "plazo_h": 8.0,
+   "plazo_h": 7.0,
    "margen": 0.21,
    "etiqueta": null,
    "evento": "-",
@@ -68,23 +68,23 @@ window.VIGIA = {
    "parcial": false,
    "cola": false,
    "prob": {
-    "2.40": 0,
+    "2.40": 1,
     "2.50": 0,
     "2.90": 0
    },
    "rango": [
-    1.38,
-    1.92
+    1.64,
+    2.16
    ]
   },
   {
    "fecha": "2026-11-29",
    "hora": "22:00",
-   "pico": 1.38,
-   "eff": 1.38,
+   "pico": 1.35,
+   "eff": 1.35,
    "fuente": "modelo",
-   "plazo_h": 31.0,
-   "margen": 0.38,
+   "plazo_h": 30.0,
+   "margen": 0.37,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
@@ -96,17 +96,17 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    0.89,
-    1.87
+    0.88,
+    1.82
    ]
   },
   {
    "fecha": "2026-11-30",
    "hora": "22:00",
-   "pico": 1.61,
-   "eff": 1.61,
+   "pico": 1.56,
+   "eff": 1.56,
    "fuente": "modelo",
-   "plazo_h": 55.0,
+   "plazo_h": 54.0,
    "margen": 0.39,
    "etiqueta": null,
    "evento": "-",
@@ -119,54 +119,54 @@ window.VIGIA = {
     "2.90": 0
    },
    "rango": [
-    1.11,
-    2.11
+    1.06,
+    2.06
    ]
   },
   {
    "fecha": "2026-12-01",
    "hora": "22:00",
-   "pico": 1.72,
-   "eff": 1.72,
+   "pico": 1.48,
+   "eff": 1.48,
    "fuente": "modelo",
-   "plazo_h": 79.0,
-   "margen": 0.46,
+   "plazo_h": 78.0,
+   "margen": 0.44,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": false,
    "cola": false,
    "prob": {
-    "2.40": 7,
-    "2.50": 4,
+    "2.40": 2,
+    "2.50": 1,
     "2.90": 0
    },
    "rango": [
-    1.13,
-    2.31
+    0.92,
+    2.04
    ]
   },
   {
    "fecha": "2026-12-02",
    "hora": "00:00",
-   "pico": 1.45,
-   "eff": 1.45,
+   "pico": 1.3,
+   "eff": 1.3,
    "fuente": "modelo",
-   "plazo_h": 81.0,
-   "margen": 0.46,
+   "plazo_h": 80.0,
+   "margen": 0.44,
    "etiqueta": null,
    "evento": "-",
    "compuesto": false,
    "parcial": true,
    "cola": true,
    "prob": {
-    "2.40": 2,
-    "2.50": 1,
+    "2.40": 1,
+    "2.50": 0,
     "2.90": 0
    },
    "rango": [
-    0.85,
-    2.05
+    0.73,
+    1.87
    ]
   }
  ],
@@ -511,8 +511,8 @@ window.VIGIA = {
  "bajante": {
   "ref": 0.4,
   "ahora": {
-   "hora": "2026-11-28T14:45",
-   "altura": 0.87,
+   "hora": "2026-11-28T15:45",
+   "altura": 0.76,
    "va": "bajando"
   },
   "medidas_hoy": [
@@ -540,38 +540,37 @@ window.VIGIA = {
     "bajo_ref": true
    },
    {
-    "t": "2026-11-29T08:00",
-    "t_mod": "2026-11-29T05:00",
-    "altura": 0.58,
-    "fuente": "modelo",
-    "corr_h": 3.0,
-    "plazo": 1,
+    "t": "2026-11-29T07:00",
+    "altura": 0.7,
+    "fuente": "SHN",
+    "corr_h": 0.0,
+    "plazo": 0,
     "ancla": null,
-    "chance": 2,
-    "n": 53,
+    "chance": 3,
+    "n": 75,
     "rango": [
-     0.49,
-     0.86
+     0.56,
+     0.94
     ],
-    "mas_bajo": 0.39,
+    "mas_bajo": 0.29,
     "en_curso": false,
     "bajo_ref": true
    },
    {
     "t": "2026-11-29T19:00",
     "t_mod": "2026-11-29T16:00",
-    "altura": 0.41,
+    "altura": 0.4,
     "fuente": "modelo",
     "corr_h": 3.0,
-    "plazo": 2,
+    "plazo": 1,
     "ancla": null,
-    "chance": 8,
-    "n": 40,
+    "chance": 19,
+    "n": 53,
     "rango": [
-     0.44,
-     0.69
+     0.31,
+     0.68
     ],
-    "mas_bajo": 0.26,
+    "mas_bajo": 0.21,
     "en_curso": false,
     "bajo_ref": true
    },
@@ -594,27 +593,27 @@ window.VIGIA = {
     "bajo_ref": false
    },
    {
-    "t": "2026-11-30T18:00",
-    "t_mod": "2026-11-30T15:00",
-    "altura": 0.34,
+    "t": "2026-11-30T19:00",
+    "t_mod": "2026-11-30T16:00",
+    "altura": 0.31,
     "fuente": "modelo",
     "corr_h": 3.0,
     "plazo": 2,
     "ancla": null,
-    "chance": 15,
+    "chance": 25,
     "n": 40,
     "rango": [
-     0.37,
-     0.62
+     0.34,
+     0.59
     ],
-    "mas_bajo": 0.19,
+    "mas_bajo": 0.16,
     "en_curso": false,
     "bajo_ref": true
    },
    {
     "t": "2026-12-01T09:00",
     "t_mod": "2026-12-01T06:00",
-    "altura": 0.85,
+    "altura": 0.81,
     "fuente": "modelo",
     "corr_h": 3.0,
     "plazo": 3,
@@ -622,28 +621,28 @@ window.VIGIA = {
     "chance": 0,
     "n": 28,
     "rango": [
-     0.85,
-     1.2
+     0.81,
+     1.16
     ],
-    "mas_bajo": 0.76,
+    "mas_bajo": 0.72,
     "en_curso": false,
     "bajo_ref": false
    },
    {
     "t": "2026-12-01T19:00",
     "t_mod": "2026-12-01T16:00",
-    "altura": 0.38,
+    "altura": 0.37,
     "fuente": "modelo",
     "corr_h": 3.0,
-    "plazo": 4,
+    "plazo": 3,
     "ancla": null,
-    "chance": 38,
-    "n": 8,
+    "chance": 18,
+    "n": 28,
     "rango": [
-     0.14,
-     0.66
+     0.37,
+     0.72
     ],
-    "mas_bajo": 0.13,
+    "mas_bajo": 0.28,
     "en_curso": false,
     "bajo_ref": true
    }
